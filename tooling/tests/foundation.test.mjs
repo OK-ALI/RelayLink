@@ -5,6 +5,7 @@ import { execFileSync } from 'node:child_process';
 import test from 'node:test';
 import { publicationIssues } from '../verify-publication.mjs';
 import { themes } from '../../packages/design-tokens/src/index.ts';
+import { isExpectedBoundaryDenial } from '../../apps/desktop/src/ipc/foundation.ts';
 
 test('all original phases and release rows remain unchanged', () => {
   const roadmap = readFileSync('docs/planning/v2.4/RELAY_LINK_MASTER_ROADMAP_V2_4.md', 'utf8');
@@ -47,12 +48,27 @@ test('native command enrollment and grants do not include the denied probe or co
     readFileSync('apps/desktop/src-tauri/capabilities/main.json', 'utf8'),
   );
   assert.deepEqual(capability.windows, ['main']);
-  assert(capability.permissions.includes('allow-foundation-status'));
-  assert(!capability.permissions.includes('allow-boundary-probe'));
+  assert.deepEqual(capability.permissions, ['core:default', 'allow-foundation-status']);
   assert(!capability.remote);
   const config = JSON.parse(readFileSync('apps/desktop/src-tauri/tauri.conf.json', 'utf8'));
   assert.deepEqual(config.app.security.capabilities, ['main']);
   assert.equal(config.bundle.active, false);
+});
+
+test('native boundary evidence rejects generic IPC failure and wrong-command errors', () => {
+  assert(
+    isExpectedBoundaryDenial(
+      'boundary_probe',
+      'boundary_probe not allowed. Permissions associated with this command: allow-boundary-probe',
+    ),
+  );
+  assert(
+    isExpectedBoundaryDenial('windows_control', 'windows_control not allowed. Command not found'),
+  );
+  assert(!isExpectedBoundaryDenial('boundary_probe', new Error('Connection closed')));
+  assert(!isExpectedBoundaryDenial('windows_control', new Error('Connection closed')));
+  assert(!isExpectedBoundaryDenial('boundary_probe', 'other_command not allowed'));
+  assert(!isExpectedBoundaryDenial('unrelated', 'windows_control not allowed. Command not found'));
 });
 
 test('publication scanner rejects sensitive paths and content without printing values', () => {

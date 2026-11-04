@@ -24,4 +24,6 @@ Smoke: clean-checkout install/type/test/build on a fresh runner, inspect CI outp
 
 ## Result enforcement
 
+Native evidence refinement gate, defined before editing: the UI may report a verified boundary only for the expected ACL denial and command-not-found results, never a generic disconnected/failed IPC call. Add negative classification regression cases, retain the exact narrow permission grant, rebuild and rerun the actual WebView smoke. This is a Phase 0 diagnostic correction and grants no additional authority.
+
 Each gate records PASS/CONDITIONAL/BLOCKED with actual evidence. Every feasible required smoke/regression check must be executed by Codex. Missing devices/SDK/driver/game/visual approval are explicitly NOT RUN/BLOCKED with exact next steps; they are never fabricated as passes. Mandatory Phase 0 exit gaps prevent Phase 0 PASS and a phase-complete tag. A partially verified implementation cannot silently become a stable checkpoint. Stop at the Phase 0 completion report.

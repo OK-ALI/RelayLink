@@ -11,3 +11,9 @@ Phase 0 security decision: plan reviewed authenticated TLS plus host-key pinning
 The current Orion snapshot is v3 and stronger than the roadmap's historical v2 description. Preserve that fact in the separate reference. The approved Relay Link target remains device-bound, pinned and encrypted before Windows control; do not regress to plaintext because older prose describes it. Exact migration/parity differences and any conflict in attempt-window requirements must be resolved before Phase 1 consequential work.
 
 Later gates must test hostile bootstrap/pin replacement, copied bearer credential without bound-key proof, key-storage failure, stale/replayed epochs, revoked capability and every command entry path. Emergency disconnect ownership/watchdog/targeting requirements remain design-only until their authorized gaming/safety phases. No timing, pause or game support is claimed now.
+
+## Executed boundary evidence and concrete planning choice
+
+Actual Windows WebView smoke passed: local status allowed, enrolled-ungranted probe denied by command permission, nonexistent Windows command rejected, Settings opened. Sanitized evidence: `docs/testing/evidence/native-boundary.json`. The blank native view was fixed through ahead-of-time schema validation; CSP was not weakened with dynamic evaluation. Browser smoke is separate evidence.
+
+[ADR 0002](../decisions/0002-security-bootstrap.md) selects the planning baseline: maintained rustls TLS 1.3, P-256/SHA-256 device-bound proof and non-exportable Android Keystore keys. It supersedes the earlier generic library preference paragraph, not the mandatory hostile-test gate. Exact integration revisions/platform adapters and handshake review precede authorized implementation. No crypto/transport code was introduced.

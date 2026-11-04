@@ -1,0 +1,8 @@
+{
+  "Scope": "Single available host; debug build; approximate process-tree baseline, not low-end or 10-minute budget validation",
+  "DurationSeconds": 30.1846942,
+  "TotalSystemCpuPercent": 0.019411742127240107,
+  "WorkingSetMiB": 463.1328125,
+  "PrivateMiB": 272.20703125,
+  "ProcessCount": 8
+}
