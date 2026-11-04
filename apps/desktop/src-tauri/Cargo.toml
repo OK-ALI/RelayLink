@@ -1,0 +1,16 @@
+[package]
+name = "relay-link-desktop"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license-file = "../../../docs/legal/LICENSE"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+[dependencies]
+tauri = { version = "=2.12.5", features = [] }
+relay-core = { path = "../../../crates/relay-core" }

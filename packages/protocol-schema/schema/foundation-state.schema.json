@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://relay-link.invalid/schema/foundation-state-v1.json",
+  "title": "FoundationState",
+  "description": "Local Phase 0 status, not a control command or authenticated transport.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["application", "protocolVersion", "phase", "controlEnabled", "capabilities"],
+  "properties": {
+    "application": { "const": "relay-link", "type": "string" },
+    "protocolVersion": { "const": 1, "type": "integer" },
+    "phase": { "const": 0, "type": "integer" },
+    "controlEnabled": { "const": false, "type": "boolean" },
+    "capabilities": { "type": "array", "maxItems": 0, "items": { "type": "string" } }
+  }
+}

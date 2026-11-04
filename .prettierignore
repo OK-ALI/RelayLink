@@ -1,0 +1,14 @@
+pnpm-lock.yaml
+Cargo.lock
+target/
+node_modules/
+**/dist/
+**/android/
+**/ios/
+**/.expo/
+**/src/generated/
+docs/planning/
+docs/governance/
+AGENTS.md
+artifacts-local/
+.toolchains/

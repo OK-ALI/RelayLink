@@ -1,0 +1,92 @@
+name: Phase 0 foundation
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+concurrency:
+  group: foundation-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  contracts-and-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24.16.0
+      - run: npm install --global pnpm@11.25.0
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm generate && git diff --exit-code -- packages/protocol-schema/src/generated
+      - run: pnpm check
+      - run: pnpm verify:publication
+      - run: pnpm build:desktop-ui && pnpm export:mobile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:ui
+      - run: rustup toolchain install 1.96.0 --profile minimal --component rustfmt --component clippy
+      - run: cargo test -p relay-core -p relay-protocol --locked
+      - run: cargo fmt --all -- --check
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always()
+        with:
+          name: browser-smoke-evidence
+          path: artifacts-local/
+  windows-native:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: 24.16.0
+      - run: npm install --global pnpm@11.25.0
+      - run: pnpm install --frozen-lockfile
+      - run: rustup toolchain install 1.96.0 --profile minimal --component rustfmt --component clippy
+      - run: pnpm build:desktop-ui
+      - run: cargo test --workspace --locked
+      - run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - run: pnpm --filter @relay-link/desktop exec tauri build --debug --no-bundle
+  android-development-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: 24.16.0
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: npm install --global pnpm@11.25.0
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @relay-link/mobile exec expo install --check
+      - run: pnpm --filter @relay-link/mobile prebuild
+      - name: Build Android development APK
+        working-directory: apps/mobile/android
+        run: ./gradlew :app:assembleDebug -PreactNativeArchitectures=x86_64 --no-daemon
+      - name: Enable emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Start development bundler
+        run: |
+          mkdir -p artifacts-local
+          pnpm --filter @relay-link/mobile exec expo start --dev-client --localhost > artifacts-local/metro.log 2>&1 &
+          for i in $(seq 1 60); do curl -fsS http://127.0.0.1:8081/status && break || sleep 1; done
+      - uses: reactivecircus/android-emulator-runner@4c44018e59b437e86cdfc41da381398f93ed8808 # v2, pinned test infrastructure
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          script: |
+            adb install apps/mobile/android/app/build/outputs/apk/debug/app-debug.apk
+            node tooling/smoke-android.mjs
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        if: always()
+        with:
+          name: android-development-apk
+          path: |
+            apps/mobile/android/app/build/outputs/apk/debug/*.apk
+            artifacts-local/

@@ -1,0 +1,13 @@
+# Phase 0 security boundary and Phase 2 design requirements
+
+Current implementation: no Windows execution API, network control server, service, virtual controller, script engine or capture path. Rust returns a fixed local state with `controlEnabled=false` and no capabilities. Shared schema rejects enabled authority, later-phase state and unknown fields.
+
+The native build script explicitly enrolls application commands. The main actual webview receives only core UI defaults and `allow-foundation-status`. The enrolled probe is not granted; nonexistent Windows-control calls cannot resolve. No remote-origin capability exists. Same-webview routes share authority; Settings/Devices labels are not isolation principals. Strict production CSP restricts scripts/fonts/images to bundled content and IPC. Native smoke executes actual allowed/ungranted/unknown invokes; browser UI tests do not claim IPC proof.
+
+Harmless `boundary_probe` returns a sentinel if incorrectly granted, so missing ACL configuration cannot produce a false successful denial through a manual Rust error. The UI reports boundary failure if any forbidden call succeeds. This test command has no sensitive action and is not a placeholder Windows engine.
+
+Phase 0 security decision: plan reviewed authenticated TLS plus host-key pinning, device-bound signing-key proof, action/session-bound authorization, replay/dedupe and key revocation/re-pairing. Prefer maintained Rust TLS/cryptographic libraries and Android Keystore-backed device keys; select exact library/algorithm/platform-adapter revisions in a security spike before implementing the handshake. For manual/code-only pairing require independent identity comparison or a reviewed authenticated key exchange, never arbitrary TOFU/certificate bypass. QR must bind host identity/challenge. This is a design requirement, not implemented security or authorization to begin Phase 1/2.
+
+The current Orion snapshot is v3 and stronger than the roadmap's historical v2 description. Preserve that fact in the separate reference. The approved Relay Link target remains device-bound, pinned and encrypted before Windows control; do not regress to plaintext because older prose describes it. Exact migration/parity differences and any conflict in attempt-window requirements must be resolved before Phase 1 consequential work.
+
+Later gates must test hostile bootstrap/pin replacement, copied bearer credential without bound-key proof, key-storage failure, stale/replayed epochs, revoked capability and every command entry path. Emergency disconnect ownership/watchdog/targeting requirements remain design-only until their authorized gaming/safety phases. No timing, pause or game support is claimed now.

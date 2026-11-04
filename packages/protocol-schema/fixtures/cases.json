@@ -1,0 +1,68 @@
+[
+  {
+    "name": "neutral foundation",
+    "valid": true,
+    "value": {
+      "application": "relay-link",
+      "protocolVersion": 1,
+      "phase": 0,
+      "controlEnabled": false,
+      "capabilities": []
+    }
+  },
+  {
+    "name": "control authority cannot be enabled",
+    "valid": false,
+    "value": {
+      "application": "relay-link",
+      "protocolVersion": 1,
+      "phase": 0,
+      "controlEnabled": true,
+      "capabilities": []
+    }
+  },
+  {
+    "name": "no phase one authority",
+    "valid": false,
+    "value": {
+      "application": "relay-link",
+      "protocolVersion": 1,
+      "phase": 1,
+      "controlEnabled": false,
+      "capabilities": []
+    }
+  },
+  {
+    "name": "no input capabilities",
+    "valid": false,
+    "value": {
+      "application": "relay-link",
+      "protocolVersion": 1,
+      "phase": 0,
+      "controlEnabled": false,
+      "capabilities": ["keyboard"]
+    }
+  },
+  {
+    "name": "unknown fields rejected",
+    "valid": false,
+    "value": {
+      "application": "relay-link",
+      "protocolVersion": 1,
+      "phase": 0,
+      "controlEnabled": false,
+      "capabilities": [],
+      "token": "fixture-not-a-real-credential"
+    }
+  },
+  {
+    "name": "missing phase rejected",
+    "valid": false,
+    "value": {
+      "application": "relay-link",
+      "protocolVersion": 1,
+      "controlEnabled": false,
+      "capabilities": []
+    }
+  }
+]

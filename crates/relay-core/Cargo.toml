@@ -1,0 +1,8 @@
+[package]
+name = "relay-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license-file = "../../docs/legal/LICENSE"
+[dependencies]
+relay-protocol = { path = "../relay-protocol" }

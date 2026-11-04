@@ -1,0 +1,21 @@
+{
+  "name": "@relay-link/protocol-schema",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "generate": "json2ts -i schema/foundation-state.schema.json -o src/generated/foundation-state.ts && node tooling/generate-validator.mjs",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "ajv": "8.20.0"
+  },
+  "devDependencies": {
+    "json-schema-to-typescript": "16.0.0"
+  }
+}

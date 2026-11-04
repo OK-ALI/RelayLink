@@ -1,0 +1,31 @@
+{
+  "name": "@relay-link/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -p tsconfig.json && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc -p tsconfig.json",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@relay-link/design-tokens": "workspace:*",
+    "@relay-link/protocol-schema": "workspace:*",
+    "@fontsource/manrope": "5.3.0",
+    "@fontsource/space-grotesk": "5.3.0",
+    "@tauri-apps/api": "2.12.4",
+    "lucide-react": "1.68.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.12.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.2.1",
+    "vite": "8.3.5"
+  }
+}

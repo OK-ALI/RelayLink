@@ -1,0 +1,18 @@
+# Available environment and target inventory
+
+Inspected November 4, 2026. This inventory identifies available equipment, not supported-product claims.
+
+| Item                                   | Observed availability                                                                                                              |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Windows host                           | Windows 11 Home x64, build 26300; Ryzen 9 5900HX, 8 cores/16 logical CPUs; approximately 15.4 GiB RAM                              |
+| Native build                           | Visual Studio 18 Build Tools; Windows SDK 10.0.26100.0; MSVC stable Rust                                                           |
+| Browser/native runtime                 | Edge/WebDriver 156.0.4314.58; actual WebView2 testing handled separately                                                           |
+| JavaScript/Rust                        | Node 24.16.0, pnpm 11.25.0, Rust/Cargo 1.96.0                                                                                      |
+| Java                                   | Microsoft JDK 21.0.9 locally; CI selects Java 21                                                                                   |
+| Android                                | No local Android SDK/adb/emulator or connected physical phone found during initial inventory; native CI build is separate evidence |
+| Lower-end/midrange/high-refresh phones | No physical access established; NOT RUN for real-device behavior/performance                                                       |
+| Networks/DPI/sensors                   | No multi-device network, sensor or full DPI matrix exercised; NOT RUN                                                              |
+
+Reference selection tasks: obtain a lower-end small 60 Hz Android plus modest Windows pair, a mainstream pair and higher-refresh reference; include missing/unreliable sensor and battery saver. Record exact OS/security lifecycle status before claiming support. This available host is not sufficient evidence of low-end compatibility or all Windows 10/11/Android support.
+
+Provisional input/resource budgets remain in master §22. Phase 0 shell measurements may establish a single-host baseline, never gaming, battery or network claims. Physical follow-up: install a verified development APK on the named Android device, open the loopback/LAN development URL, exercise Home/Settings/themes/text scaling/reduced motion, rotate/background/reopen, record build/device/screenshots and failures. Later input/game/sensor tests belong to their authorized phases.

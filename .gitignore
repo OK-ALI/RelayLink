@@ -1,0 +1,42 @@
+# Supplied review inputs are retained locally; they have not been cleared for public distribution.
+/docs/planning/source/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.pfx
+*.p12
+*.jks
+*.keystore
+/secrets/
+
+# Future build outputs, caches, logs and generated release artifacts
+node_modules/
+target/
+dist/
+build/
+.expo/
+.turbo/
+coverage/
+*.log
+*.tmp
+*.tsbuildinfo
+/artifacts/
+/releases/
+/artifacts-local/
+/.toolchains/
+/.pnpm-store/
+**/android/.gradle/
+**/android/app/build/
+**/android/local.properties
+**/ios/Pods/
+**/test-results/
+**/playwright-report/
+**/src-tauri/gen/schemas/
+/apps/mobile/android/
+/apps/mobile/ios/
+.DS_Store
+Thumbs.db

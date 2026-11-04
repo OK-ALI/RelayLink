@@ -1,0 +1,37 @@
+{
+  "name": "relay-link-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=24.16.0 <25"
+  },
+  "scripts": {
+    "dev:desktop": "pnpm --filter @relay-link/desktop tauri dev --no-default-features",
+    "dev:mobile": "pnpm --filter @relay-link/mobile start",
+    "generate": "pnpm --filter @relay-link/protocol-schema generate",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "lint": "eslint apps packages tooling tests --max-warnings 0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "node --test tooling/tests/*.test.mjs && pnpm --filter @relay-link/protocol-schema test",
+    "test:rust": "cargo test --workspace --locked",
+    "test:ui": "playwright test",
+    "build:desktop-ui": "pnpm --filter @relay-link/desktop build",
+    "build:desktop": "pnpm --filter @relay-link/desktop tauri build --no-bundle",
+    "export:mobile": "pnpm --filter @relay-link/mobile export",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test",
+    "verify:publication": "node tooling/verify-publication.mjs",
+    "test:native": "node tooling/smoke-native.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.64.1",
+    "@types/node": "24.10.0",
+    "eslint": "10.14.0",
+    "prettier": "3.9.10",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.1"
+  }
+}
