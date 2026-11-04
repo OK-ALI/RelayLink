@@ -1,6 +1,6 @@
 # Brand foundation candidates
 
-All three vector marks in `branding/source/` are original letter-free comparison studies, not approved production symbols. No supplied poster image has been traced, copied, embedded or published. The Linked Path study is temporarily used to coordinate the development shells; it does not signify an owner selection.
+All three vector marks in `branding/source/` are original letter-free comparison studies. The owner approved A — Linked Path as the Phase 0 concept direction on November 4, 2026; final production symbols/platform exports remain unapproved. No supplied poster image has been traced, copied, embedded or published. Linked Path coordinates the development shells; B/C are retained comparison alternatives.
 
 Compare each in monochrome at 16/20/24/32 pixels, dark/light, tray/taskbar, adaptive Android masks and notification contexts. Reject collapsed gaps, letter-shaped readings, stock-symbol resemblance and dependence on glow. Owner review and distinctiveness/rights checks remain open. Final Windows/Android exports are not claimed complete.
 

@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import test from 'node:test';
 import { publicationIssues } from '../verify-publication.mjs';
+import { themes } from '../../packages/design-tokens/src/index.ts';
 
 test('all original phases and release rows remain unchanged', () => {
   const roadmap = readFileSync('docs/planning/v2.4/RELAY_LINK_MASTER_ROADMAP_V2_4.md', 'utf8');
@@ -75,4 +76,26 @@ test('owned project documentation is organized inside docs', () => {
     (path) => /(?:\.md$|(?:^|\/)LICENSE$)/.test(path) && !path.startsWith('docs/'),
   );
   assert.deepEqual(scattered, [], 'Keep all project documentation under docs/');
+});
+
+test('candidate small-text theme pairs meet the baseline contrast threshold', () => {
+  const luminance = (hex) => {
+    const rgb = hex
+      .slice(1)
+      .match(/../g)
+      .map((value) => parseInt(value, 16) / 255)
+      .map((value) => (value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4));
+    return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
+  };
+  const contrast = (a, b) => {
+    const [bright, dark] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+    return (bright + 0.05) / (dark + 0.05);
+  };
+  for (const theme of Object.values(themes)) {
+    for (const surface of ['canvas', 'surface', 'elevated']) {
+      assert(contrast(theme.text, theme[surface]) >= 4.5, `${theme.name}: text on ${surface}`);
+      assert(contrast(theme.muted, theme[surface]) >= 4.5, `${theme.name}: muted on ${surface}`);
+    }
+    assert(contrast(theme.onAccent, theme.accent) >= 4.5, `${theme.name}: accent label`);
+  }
 });

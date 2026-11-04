@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { readFile } from 'node:fs/promises';
 
 test('desktop navigation, candidacy, settings and theme remain usable without control', async ({
   page,
@@ -55,4 +56,25 @@ test('mobile web shell navigation/search/theme and no-control state', async ({ p
     true,
   );
   expect(errors).toEqual([]);
+});
+
+test('capture concrete desktop, mobile and letter-free mark comparisons for owner review', async ({
+  page,
+}) => {
+  await page.goto('/');
+  await expect(page.getByText('Remote access is off')).toBeVisible();
+  await page.screenshot({ path: 'artifacts-local/review-desktop.png', fullPage: true });
+  await page.setViewportSize({ width: 393, height: 852 });
+  await page.goto('http://127.0.0.1:8082');
+  await expect(page.getByText('Remote access is off')).toBeVisible();
+  await page.screenshot({ path: 'artifacts-local/review-mobile.png', fullPage: true });
+  const names = ['linked-path', 'relay-loop', 'directional-bridge'];
+  const marks = await Promise.all(
+    names.map((name) => readFile(`branding/source/${name}-candidate.svg`, 'utf8')),
+  );
+  await page.setViewportSize({ width: 1200, height: 650 });
+  await page.setContent(
+    `<html><body style="margin:0;background:#101419;color:#f5f1e8;font-family:system-ui;padding:44px"><p style="color:#f0a34a;letter-spacing:3px;font-size:11px">RELAY LINK · PHASE 0 DESIGN REVIEW</p><h1 style="font-size:32px">Three link-only directions.</h1><p style="color:#b9c3ce">Original comparison studies. No symbol is selected or approved.</p><div style="display:flex;gap:24px;margin-top:36px">${marks.map((mark, i) => `<section style="flex:1;background:#1b232d;padding:28px;border-radius:18px"><div style="width:100px;height:100px;margin-bottom:28px">${mark}</div><h2 style="font-size:18px">${['A · Linked Path', 'B · Relay Loop', 'C · Directional Bridge'][i]}</h2><div style="display:flex;gap:20px;align-items:center">${[16, 24, 32].map((size) => `<span style="display:inline-block;width:${size}px;height:${size}px">${mark}</span>`).join('')}</div><p style="font-size:11px;color:#b9c3ce">16 px · 24 px · 32 px</p></section>`).join('')}</div></body></html>`,
+  );
+  await page.screenshot({ path: 'artifacts-local/review-symbols.png', fullPage: true });
 });

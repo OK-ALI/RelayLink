@@ -1,0 +1,11 @@
+# ADR 0002: planned identity and bootstrap baseline
+
+Status: Phase 0 technical design selection, **not implemented or security-verified**. No transport, pairing code, credential store or Windows authority is enabled. Exact integration versions must be reviewed/pinned with their security advisories before authorized implementation.
+
+Use maintained rustls 0.23-family TLS 1.3 with an explicit supported cryptography provider rather than custom encryption. Select P-256 ECDSA device proof with SHA-256 transcript hashing for Android Keystore interoperability; private device keys must remain non-exportable through a native Keystore adapter, not serialized as bearer strings in JavaScript/SecureStore. Hardware backing is detected and honestly reported rather than universally promised. Host private material uses a Windows user-bound protected store. Schema/configuration may not export private keys or grants.
+
+Desktop identity is pinned through an authenticated binding, with QR carrying identity/fingerprint, service identity and temporary challenge. Manual/code-only onboarding must include independently checked identity comparison or a reviewed authenticated key exchange. A code sent to an arbitrary endpoint is insufficient. Rotate session credentials, bind proof to host/device/session/challenge and invalidate on replay/revocation/identity mismatch. No trust-all certificate handler, silent pin replacement or homegrown encryption protocol.
+
+The full transcript/handshake requires a dedicated security review and hostile tests before Phase 2 PASS. TLS and signing primitives alone do not prove secure pairing; domain separation, challenge freshness, target/capability binding, expiry and safe recovery must be designed/tested together. The newer Orion v3 source supplies behavioral reference, not permission to copy uncertain code or start Phase 1.
+
+Platform basis reviewed November 4: [rustls](https://docs.rs/rustls/latest/rustls/) documents TLS/provider support; [Android Keystore](https://developer.android.com/privacy-and-security/keystore) documents non-exportability, conditional hardware backing and P-256 support. These references support a planning choice, not an audited Relay Link implementation. No unused crypto packages are installed in Phase 0.
