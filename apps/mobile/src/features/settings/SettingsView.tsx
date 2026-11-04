@@ -50,6 +50,7 @@ export function SettingsView({
               <Pressable
                 key={id}
                 accessibilityRole="button"
+                accessibilityLabel={palette.name}
                 accessibilityState={{ selected: theme === id }}
                 onPress={() => setTheme(id as ThemeId)}
                 style={[s.theme, { backgroundColor: theme === id ? t.surface : 'transparent' }]}

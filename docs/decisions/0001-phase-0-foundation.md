@@ -1,6 +1,6 @@
 # ADR 0001: foundation choices and boundaries
 
-Status: implemented foundation decisions under Phase 0 authorization; artistic proposals remain unapproved.
+Status: implemented foundation decisions under Phase 0 authorization; the owner approved the theme/type/navigation and Linked Path concept direction; final production artwork remains unapproved.
 
 - Preserve the selected Tauri 2 + React/TypeScript/Vite and Rust direction. Explicitly pin stable Tauri 2; do not accidentally select Tauri 3 prereleases. Native Windows control is absent.
 - Use Expo SDK 58's compatible React/React Native/Router module versions and Expo Development Build. Expo Go is not the supported native validation path. Prebuild generates ignored Android sources; lockfile/app configuration are authoritative.

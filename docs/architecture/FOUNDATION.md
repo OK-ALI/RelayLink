@@ -11,7 +11,7 @@ Phase 0 only: a Tauri 2/React/TypeScript/Vite Windows shell, React Native/Expo D
 | `crates/relay-protocol`          | Rust status serialization and canonical-schema fixture validation                         |
 | `packages/protocol-schema`       | Canonical Draft 7 schema, generated TypeScript and shared positive/negative fixtures      |
 | `packages/design-tokens`         | Candidate themes, typography-independent semantics, spacing, motion and isolated identity |
-| `branding`                       | Original unapproved link-symbol studies and usage criteria                                |
+| `branding`                       | Original link-symbol studies; Linked Path concept approved, production assets pending     |
 | `tests`, `tooling`               | Reusable browser/native smoke, regression and publication checks                          |
 | `docs`, `.github/workflows`      | Specifications, decisions, evidence summaries and clean-runner verification               |
 | `artifacts-local`, `.toolchains` | Ignored local source snapshots, screenshots/logs and testing tools                        |

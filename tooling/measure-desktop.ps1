@@ -46,6 +46,7 @@ try {
             PrivateMiB = ($processes | Measure-Object PrivateMemorySize64 -Sum).Sum / 1MB
             ProcessCount = $processes.Count
         })
+        if ($samples.Count % 12 -eq 0) { Write-Output "Resource sample: $([int]$timer.Elapsed.TotalSeconds) seconds recorded." }
     }
     $last = $samples[$samples.Count - 1]
     $result = [ordered]@{
@@ -67,6 +68,17 @@ try {
     $result | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $outputPath -Encoding utf8
     $result.Remove('Samples')
     $result | ConvertTo-Json -Depth 3
+} catch {
+    if ($null -ne $timer -and $null -ne $samples) {
+        [ordered]@{
+            Result = 'INCOMPLETE'
+            Reason = $_.Exception.Message
+            ExitCode = if ($application.HasExited) { $application.ExitCode } else { $null }
+            DurationSeconds = $timer.Elapsed.TotalSeconds
+            Samples = @($samples)
+        } | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $projectRoot 'artifacts-local/desktop-release-resource-incomplete.json') -Encoding utf8
+    }
+    throw
 } finally {
     $application.Refresh()
     if (-not $application.HasExited) { [void]$application.CloseMainWindow() }

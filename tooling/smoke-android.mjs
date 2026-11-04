@@ -9,9 +9,10 @@ const dump = () => {
   return adb('exec-out', 'cat', '/sdcard/relay-link-ui.xml');
 };
 function tap(xml, label) {
-  const node = xml
-    .match(/<node\b[^>]+>/g)
-    ?.find((item) => item.includes(`text="${label}"`) || item.includes(`content-desc="${label}"`));
+  const nodes = xml.match(/<node\b[^>]+>/g) ?? [];
+  const node =
+    nodes.find((item) => item.includes(`content-desc="${label}"`)) ??
+    nodes.find((item) => item.includes(`text="${label}"`));
   const bounds = node?.match(/bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"/);
   assert(bounds, `Native Android node not found: ${label}`);
   adb(
@@ -23,8 +24,18 @@ function tap(xml, label) {
   );
 }
 await mkdir('artifacts-local', { recursive: true });
+await writeFile(
+  'artifacts-local/android-smoke.json',
+  JSON.stringify({ result: 'RUNNING', runtime: 'dedicated Android emulator smoke' }) + '\n',
+);
 try {
+  assert.equal(
+    adb('shell', 'getprop', 'ro.kernel.qemu').trim(),
+    '1',
+    'Use the dedicated test emulator',
+  );
   adb('reverse', 'tcp:8081', 'tcp:8081');
+  adb('shell', 'am', 'force-stop', 'com.relaylink.mobile');
   adb(
     'shell',
     'am',
@@ -40,10 +51,19 @@ try {
   const startupDeadline = Date.now() + 180000;
   let introductionDismissed = false;
   let menuClosed = false;
+  let launcherRecoveries = 0;
   while (Date.now() < startupDeadline) {
     await delay(1000);
     try {
       xml = dump();
+      if (xml.includes("Quickstep isn't responding") && launcherRecoveries === 0) {
+        tap(xml, 'Close app');
+        launcherRecoveries++;
+        continue;
+      }
+      if (xml.includes("isn't responding")) {
+        throw new Error('Unexpected Android ANR: inspect failure evidence');
+      }
       if (xml.includes('Remote access is off')) break;
       if (
         !introductionDismissed &&
@@ -60,7 +80,8 @@ try {
         tap(xml, 'Close');
         menuClosed = true;
       }
-    } catch {
+    } catch (error) {
+      if (error instanceof Error && error.message.startsWith('Unexpected Android ANR')) throw error;
       /* Retry while the emulator and native view initialize. */
     }
   }
@@ -82,6 +103,32 @@ try {
   await delay(500);
   xml = dump();
   assert(xml.includes('Privacy and access'), 'Actual Android settings search failed');
+  adb('shell', 'input', 'keyevent', ...Array(7).fill('67'));
+  adb('shell', 'input', 'keyevent', '4');
+  await delay(700);
+  xml = dump();
+  tap(xml, 'Carbon Teal');
+  await delay(500);
+  xml = dump();
+  assert(
+    xml
+      .match(/<node\b[^>]+>/g)
+      ?.some(
+        (node) => node.includes('content-desc="Carbon Teal"') && node.includes('selected="true"'),
+      ),
+    'Native theme selection was not reflected',
+  );
+  tap(xml, 'Reduce motion');
+  await delay(500);
+  xml = dump();
+  assert(
+    xml
+      .match(/<node\b[^>]+>/g)
+      ?.some(
+        (node) => node.includes('content-desc="Reduce motion"') && node.includes('checked="true"'),
+      ),
+    'Native reduced-motion switch did not turn on',
+  );
   await writeFile('artifacts-local/android-settings.xml', xml);
   await writeFile(
     'artifacts-local/android-shell.png',
@@ -96,7 +143,13 @@ try {
         home: 'disabled control visible',
         settings: 'opened',
         search: 'privacy found',
+        theme: 'Carbon Teal selected',
+        reducedMotion: 'native switch checked',
         physicalDevice: 'NOT RUN',
+        developmentIntroductionDismissed: introductionDismissed,
+        developmentMenuClosed: menuClosed,
+        emulatorLauncherRecoveries: launcherRecoveries,
+        androidApi: adb('shell', 'getprop', 'ro.build.version.sdk').trim(),
       },
       null,
       2,
@@ -106,6 +159,14 @@ try {
     'PASS: actual Android development build opened Home, Settings and privacy search. Physical-device behavior is not claimed.',
   );
 } catch (error) {
+  await writeFile(
+    'artifacts-local/android-smoke.json',
+    JSON.stringify({
+      result: 'FAIL',
+      error: String(error),
+      runtime: 'dedicated Android emulator smoke',
+    }) + '\n',
+  );
   for (const [name, args] of [
     ['android-failure.png', ['exec-out', 'screencap', '-p']],
     ['android-errors.log', ['logcat', '-d', '-s', 'ReactNativeJS:E', 'AndroidRuntime:E', '*:S']],

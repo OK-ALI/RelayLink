@@ -1,0 +1,19 @@
+# Android development build on Windows
+
+## Tool correction acceptance gate
+
+The initial local build failed with CMake/Ninja regeneration loops. Dry-run diagnostics show the SDK-bundled Ninja is 1.10.2. [The dependency maintainer's Windows build guide](https://docs.swmansion.com/react-native-reanimated/docs/guides/building-on-windows/) requires Ninja 1.12 or newer and warns about Windows paths; this suggests an outdated-tool issue, not proof of the complete cause.
+
+Before changing local tooling: obtain the official [Ninja 1.13.2 Windows release](https://github.com/ninja-build/ninja/releases/tag/v1.13.2), verify its published ZIP SHA-256 `07fc8261b42b20e71d1720b39068c2e14ffcee6396b76fb7a795fb460b78dc65`, preserve the old executable, and use the replacement only inside the ignored project-local SDK. Do not patch application/dependency sources, downgrade architecture/dependencies or alter Windows registry settings.
+
+Smoke/regression: verify the executable version and rerun the same x86_64 Gradle development build with the locked source. Record the actual result in the Phase 0 report. A tooling replacement without a passing build is not a resolved gate. Recovery is restoring the preserved SDK-local Ninja executable. This changes the development environment, not the approved product architecture or runtime scope.
+
+## Store-path correction acceptance gate
+
+Ninja 1.13.2 alone did not resolve the regeneration loop. Further diagnostics identified a 261-character generated ReactAndroid configuration path: normal Windows path existence checking returned false while the exact extended-length path returned true. The file exists; ordinary tool path access fails. [pnpm documents shortening virtual-store directory names](https://pnpm.io/settings/node-modules#virtualstoredirmaxlength) for this problem.
+
+Before editing configuration: set `virtualStoreDirMaxLength: 32` in the workspace, recreate only generated dependency links with the frozen lockfile, and preserve package versions/architecture. Stop the affected Metro server first. Do not move the project, enable registry changes, patch dependency sources or add a different package manager. Run quality/contracts, Desktop/Mobile exports, actual UI/native smoke and the Android Gradle build again. Confirm the previously failing generated paths are accessible without extended-length prefixes. The change is complete only after the applicable retests pass.
+
+The shorter store resolved the configuration-path regeneration loop, but compilation then failed creating a deeply nested object-output directory. Before the next correction: use Android's documented [CMake build staging directory](https://developer.android.com/reference/tools/gradle-api/9.0/com/android/build/api/dsl/Cmake) through an explicitly invoked, repository-owned [Gradle init script](https://docs.gradle.org/9.4.1/userguide/init_scripts.html). On Windows only, stage CMake output under ignored `artifacts-local/android-native/` and request CMake's normal object-path hashing. Do not globally install this rule or change dependencies/registry/source files. Repeat the same APK build and native smoke; Linux configuration is unchanged. This is a build-path compatibility correction, not new product architecture.
+
+From `apps/mobile/android`, use `gradlew.bat :app:assembleDebug -PreactNativeArchitectures=x86_64 --no-daemon --max-workers=2 --init-script ../../../tooling/android-native-paths.gradle`. The script and generated paths stay inside the existing organized workspace. Final outcomes are recorded in the phase report, not assumed from this procedure.

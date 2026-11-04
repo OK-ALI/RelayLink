@@ -1,0 +1,15 @@
+{
+  "Scope": "Available Windows host; release build; open idle window; app/WebView descendants only; not tray, low-end, active-control or physical-device acceptance",
+  "BinarySha256": "e4bfb0acac27ad808d711b867f22eb3d3656367c1cee51284ff6d4547c754707",
+  "WarmupSeconds": 20,
+  "DurationSeconds": 604.93295,
+  "SampleCount": 115,
+  "LogicalProcessors": 16,
+  "TotalSystemCpuPercent": 0.0,
+  "AveragePrivateMiB": 215.28338994565217,
+  "PeakPrivateMiB": 217.83203125,
+  "AverageWorkingSetMiB": 112.93420516304347,
+  "PeakWorkingSetMiB": 124.26171875,
+  "FinalProcessCount": 7,
+  "Limitations": "CPU of children that exit during the interval can be undercounted; working-set sums can double-count shared pages. GPU, startup, network, battery and low-end compatibility not measured."
+}
