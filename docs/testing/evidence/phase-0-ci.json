@@ -1,0 +1,33 @@
+{
+  "reviewDate": "2026-11-05",
+  "implementationCommit": "b3cf2cc3d8b4ed31306cec024cfecdc981223354",
+  "runId": 41883687837,
+  "runUrl": "https://github.com/OK-ALI/RelayLink/actions/runs/41883687837",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "id": 126762388373,
+      "name": "windows-native",
+      "conclusion": "success"
+    },
+    {
+      "id": 126762389166,
+      "name": "contracts-and-ui",
+      "conclusion": "success"
+    },
+    {
+      "id": 126762389418,
+      "name": "android-development-build",
+      "conclusion": "success"
+    }
+  ],
+  "inspectedLogs": {
+    "browser": "8 passed",
+    "rust": "two test functions passed; shared fixtures exercised",
+    "androidBuild": "BUILD SUCCESSFUL in 9m 49s",
+    "androidSmoke": "actual development build Home/Settings/privacy/theme/reduced-motion/target assertions passed"
+  },
+  "physicalDevice": "NOT RUN",
+  "scope": "Phase 0 only; no later-phase compatibility/security/gaming or release claims"
+}

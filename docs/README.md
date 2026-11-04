@@ -1,6 +1,6 @@
 # Relay Link
 
-Phase 0 implementation is authorized and in progress. Phase 1 and later are not authorized. This repository contains isolated Desktop/Mobile foundations, not a working remote-control or gaming product. No real Windows-control engine or product network listener is enabled.
+Phase 0 implementation and required runtime/CI verification have passed; final remote checkpoint publication is pending. Phase 1 and later are not authorized. This repository contains isolated Desktop/Mobile foundations, not a working remote-control or gaming product. No real Windows-control engine or product network listener is enabled.
 
 ## Current foundations
 
@@ -21,6 +21,7 @@ All project documentation belongs under `docs/`, now and in future changes, exce
 - [Security policy](security/SECURITY.md)
 - [Frozen Orion reference and differences](orion-reference/ORION_CONNECT_REFERENCE.md)
 - [Available-device inventory](testing/DEVICE_MATRIX.md)
+- [Phase 0 verification report](phases/phase-0/VERIFICATION_REPORT.md)
 - [Implementation acceptance gates](phases/phase-0/IMPLEMENTATION_GATES.md)
 - [Candidate branding guidelines](branding/GUIDELINES.md)
 - [Functional application composition](ui-ux/APPLICATION_COMPOSITION.md)

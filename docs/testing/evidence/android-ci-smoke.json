@@ -1,0 +1,19 @@
+{
+  "sourceCommit": "b3cf2cc3d8b4ed31306cec024cfecdc981223354",
+  "runId": 41883687837,
+  "results": {
+    "result": "PASS",
+    "runtime": "actual Android emulator development build",
+    "home": "disabled control visible",
+    "settings": "opened",
+    "search": "privacy found",
+    "theme": "Carbon Teal selected",
+    "reducedMotion": "native switch checked",
+    "physicalDevice": "NOT RUN",
+    "developmentIntroductionDismissed": true,
+    "developmentMenuClosed": true,
+    "emulatorLauncherRecoveries": 0,
+    "androidApi": "35",
+    "switchTargetDp": 48
+  }
+}
