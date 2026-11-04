@@ -1,6 +1,6 @@
 # Relay Link
 
-Phase 0 implementation and required runtime/CI verification have passed; final remote checkpoint publication is pending. Phase 1 and later are not authorized. This repository contains isolated Desktop/Mobile foundations, not a working remote-control or gaming product. No real Windows-control engine or product network listener is enabled.
+Phase 0 is complete: required foundation checks, clean-runner CI and the remote recovery checkpoint passed. Phase 1 and later are not authorized. This repository contains isolated Desktop/Mobile foundations, not a working remote-control or gaming product. No real Windows-control engine or product network listener is enabled.
 
 ## Current foundations
 
@@ -37,10 +37,12 @@ All project documentation belongs under `docs/`, now and in future changes, exce
 - [Design decisions](planning/v2.4/RELAY_LINK_V2_4_DESIGN_DECISIONS.md)
 - [Validation plan](planning/v2.4/RELAY_LINK_V2_4_VALIDATION_PLAN.md)
 
-Planning documents describe their original pre-authorization status. The owner's later November 4 message authorizes Phase 0 only; a READY planning label never meant a completed phase. All 14 phase weights and release progression remain unchanged. No Phase 0 PASS or completed-product percentage is claimed while mandatory exit evidence/owner design review is outstanding.
+Planning documents describe their original pre-authorization status. The owner's later November 4 message authorizes Phase 0 only; a READY planning label never meant a completed phase. All 14 phase weights and release progression remain unchanged. Phase 0 contributes its original 4%; Phases 1–13 remain unstarted. Foundation type/theme/Linked Path direction is approved; production artwork and later feature reviews remain open.
 
 ## Rights, publication and recovery
 
 Official repository: https://github.com/OK-ALI/RelayLink. New original code is all rights reserved by owner decision; dependencies/fonts retain their own notices. Supplied poster artwork, original source snapshots, credentials, personal configuration, signing assets and local evidence/toolchains are excluded by `.gitignore`. A public repository is not a license grant, and ignored data is not remotely backed up.
 
 Use meaningful commits on main and verify remote synchronization. Only verified significant milestones receive annotated checkpoint tags; do not create a branch/tag for each small change. Do not claim a phase-complete checkpoint until every required gate has passed. No installer or public release is authorized.
+
+Current verified checkpoint: `checkpoint/phase-00-complete` at `1bb48d6b2fc8c415909c56db956c12757ac73ec1`. The [Phase 0 report](phases/phase-0/VERIFICATION_REPORT.md) records actual smoke/CI evidence, the resource baseline and remaining validation limits. Phase 1 requires explicit owner authorization.
