@@ -49,6 +49,9 @@ test('mobile web shell navigation/search/theme and no-control state', async ({ p
   await page.getByLabel('Search settings').fill('');
   await page.getByRole('button', { name: 'Carbon Teal' }).click();
   await page.getByRole('switch', { name: 'Reduce motion' }).check();
+  expect(
+    (await page.getByRole('switch', { name: 'Reduce motion' }).boundingBox())?.height,
+  ).toBeGreaterThanOrEqual(44);
   await page.screenshot({ path: 'artifacts-local/mobile-teal.png', fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
     true,

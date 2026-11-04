@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "runtime": "actual Android emulator development build",
+  "home": "disabled control visible",
+  "settings": "opened",
+  "search": "privacy found",
+  "theme": "Carbon Teal selected",
+  "reducedMotion": "native switch checked",
+  "physicalDevice": "NOT RUN",
+  "developmentIntroductionDismissed": false,
+  "developmentMenuClosed": false,
+  "emulatorLauncherRecoveries": 0,
+  "androidApi": "35",
+  "switchTargetDp": 48
+}

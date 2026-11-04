@@ -66,6 +66,7 @@ export function SettingsView({
             <View style={s.row}>
               <Text style={[body, s.small]}>Reduce motion</Text>
               <Switch
+                style={{ minHeight: 48, minWidth: 56 }}
                 accessibilityLabel="Reduce motion"
                 value={reduced}
                 onValueChange={setReduced}

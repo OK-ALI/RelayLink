@@ -4,12 +4,13 @@ if (System.getProperty('os.name').startsWith('Windows')) {
     def ruleFile = gradle.startParameter.initScripts.find { it.name == 'android-native-paths.gradle' }
     if (ruleFile == null) throw new GradleException('Invoke this rule with --init-script.')
     def workspaceRoot = ruleFile.canonicalFile.parentFile.parentFile
-    def nativeRoot = new File(workspaceRoot, 'artifacts-local/android-native')
+    def nativeRoot = new File(workspaceRoot, '.toolchains/c')
     gradle.beforeProject { project ->
         ['com.android.application', 'com.android.library'].each { pluginId ->
             project.pluginManager.withPlugin(pluginId) {
                 def android = project.extensions.getByName('android')
-                android.externalNativeBuild.cmake.buildStagingDirectory = new File(nativeRoot, project.path.replace(':', '_'))
+                def moduleName = project.path == ':app' ? 'a' : project.path.replace(':', '_')
+                android.externalNativeBuild.cmake.buildStagingDirectory = new File(nativeRoot, moduleName)
                 android.defaultConfig.externalNativeBuild.cmake.arguments.add('-DCMAKE_OBJECT_PATH_MAX=240')
             }
         }

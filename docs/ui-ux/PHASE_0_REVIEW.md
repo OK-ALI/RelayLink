@@ -58,3 +58,11 @@ Executed eight Playwright/Edge smoke tests on November 4: Desktop 1280×800, 192
 ![Mobile at 430 pixels](evidence/mobile-430.png)
 
 These checks are evidence of the foundation composition, not a complete screen-reader, high-DPI, text-scaling or physical-device accessibility audit. The actual Windows WebView separately passed permitted local-status, denied enrolled probe, nonexistent-command and Settings smoke checks after this refinement. Native Android results are recorded in the Phase 0 verification report, not inferred from these browser captures.
+
+## Actual Android development-build verification
+
+The API 35 x86_64 emulator ran the development APK built on the available Windows host. Home, Settings, privacy search, Carbon Teal selection and the actual reduced-motion switch passed. The switch target was corrected from approximately 27 dp to 48 dp and measured in actual Android UI bounds; web target bounds also pass. No physical-device or full accessibility certification is implied. Expo development controls are tooling, not the planned product interface.
+
+![Actual Android Home development build](evidence/mobile-native-home.png)
+
+![Actual Android settings and larger switch target](evidence/mobile-native-settings.png)

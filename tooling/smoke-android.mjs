@@ -40,7 +40,6 @@ try {
     'shell',
     'am',
     'start',
-    '-W',
     '-a',
     'android.intent.action.VIEW',
     '-d',
@@ -129,6 +128,15 @@ try {
       ),
     'Native reduced-motion switch did not turn on',
   );
+  const switchNode = xml
+    .match(/<node\b[^>]+>/g)
+    ?.find((node) => node.includes('content-desc="Reduce motion"'));
+  const switchBounds = switchNode?.match(/bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"/);
+  const densityValues = [...adb('shell', 'wm', 'density').matchAll(/density:\s*(\d+)/g)];
+  assert(switchBounds && densityValues.length, 'Missing native target measurement');
+  const density = Number(densityValues.at(-1)[1]) / 160;
+  const switchTargetDp = (Number(switchBounds[4]) - Number(switchBounds[2])) / density;
+  assert(switchTargetDp >= 44, `Native switch target too small: ${switchTargetDp} dp`);
   await writeFile('artifacts-local/android-settings.xml', xml);
   await writeFile(
     'artifacts-local/android-shell.png',
@@ -150,6 +158,7 @@ try {
         developmentMenuClosed: menuClosed,
         emulatorLauncherRecoveries: launcherRecoveries,
         androidApi: adb('shell', 'getprop', 'ro.build.version.sdk').trim(),
+        switchTargetDp,
       },
       null,
       2,
