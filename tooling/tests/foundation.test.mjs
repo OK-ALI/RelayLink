@@ -89,7 +89,8 @@ test('owned project documentation is organized inside docs', () => {
     .split('\0')
     .filter(Boolean);
   const scattered = paths.filter(
-    (path) => /(?:\.md$|(?:^|\/)LICENSE$)/.test(path) && !path.startsWith('docs/'),
+    (path) =>
+      /(?:\.md$|(?:^|\/)LICENSE$)/.test(path) && !path.startsWith('docs/') && path !== 'AGENTS.md',
   );
   assert.deepEqual(scattered, [], 'Keep all project documentation under docs/');
 });

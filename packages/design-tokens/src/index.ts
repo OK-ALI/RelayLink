@@ -41,6 +41,7 @@ export const themes = {
   },
 } as const;
 export type ThemeId = keyof typeof themes;
+export type Theme = (typeof themes)[ThemeId];
 export const spacing = { xs: 4, sm: 8, md: 16, lg: 24, xl: 32, xxl: 48 } as const;
 export const radii = { control: 10, card: 18, panel: 24 } as const;
 export const motion = { quick: 120, panel: 180, reduced: 0 } as const;

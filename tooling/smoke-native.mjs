@@ -29,12 +29,12 @@ try {
   let status = '';
   for (let attempt = 0; attempt < 40; attempt++) {
     status = await execute(
-      "return document.querySelector('[data-testid=boundary-status]')?.textContent || ''",
+      "return document.querySelector('[data-testid=boundary-status]')?.dataset.result || ''",
     );
-    if (status === 'Native boundary verified') break;
+    if (status === 'verified') break;
     await delay(250);
   }
-  if (status !== 'Native boundary verified') {
+  if (status !== 'verified') {
     await mkdir('artifacts-local', { recursive: true });
     await writeFile(
       'artifacts-local/native-failure.json',
@@ -45,7 +45,7 @@ try {
       ),
     );
   }
-  assert.equal(status, 'Native boundary verified');
+  assert.equal(status, 'verified');
   const boundary = await request(`/session/${id}/execute/async`, 'POST', {
     script: `const done=arguments[arguments.length-1]; (async()=>{const result={};for(const name of ['foundation_status','boundary_probe','windows_control']){try{result[name]={allowed:true,value:await window.__TAURI_INTERNALS__.invoke(name)}}catch(error){result[name]={allowed:false,error:String(error)}}}done(result)})()`,
     args: [],

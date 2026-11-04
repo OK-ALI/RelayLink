@@ -1,9 +1,10 @@
 # Project workspace
 
-All current/future project documentation belongs under `docs/`. Source assets and build/tool configuration retain their own appropriate homes.
+All current/future project documentation belongs under `docs/`, with the owner-required minimal root `AGENTS.md` entry point as the sole exception. Source assets and build/tool configuration retain their own appropriate homes.
 
 ```text
 RelayLink/
+├── AGENTS.md                    Minimal agent entry; full rules in docs/governance
 ├── apps/
 │   ├── desktop/                 React/Vite UI and isolated src-tauri host
 │   └── mobile/                  Expo Router/React Native development shell

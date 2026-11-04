@@ -10,9 +10,9 @@ Status: **foundation direction and A — Linked Path approved by the owner on No
 
 Candidate fonts are Space Grotesk headings and Manrope functional text. Installed font notices were inspected: both are SIL OFL 1.1; packages preserve their notices. Current weights are 400/600 UI and 500/600 display. Initial labels are English; complete language/fallback/device text-scaling coverage is not claimed. Desktop CSS includes system fallback; Android fallback must be checked on actual devices.
 
-The signature connection hub, restrained amber/graphite surfaces, shared spacing/status vocabulary and theme families retain the approved direction. Future feature tiles are labeled Planned rather than working controls. Mobile adapts navigation/targets for touch rather than cloning Desktop. Search, local themes and reduced-motion settings work in the foundation; saved cross-device preferences and all real PC control are deferred.
+The signature connection hub, restrained amber/graphite surfaces, shared spacing/status vocabulary and theme families retain the approved direction. The refined Command Center uses a device workspace, activity rows, anchored access/safety state and local actions. Future control surfaces are compact planned rows, with no fabricated telemetry or active feature controls. Mobile adapts navigation/targets for touch rather than cloning Desktop. Search, local themes and reduced-motion settings work in the foundation; saved cross-device preferences and all real PC control are deferred.
 
-Owner review: approve or revise the foundation composition, candidate type pair, theme family continuity and navigation direction. Exact production shades, final assets and later feature layouts remain reviewable at their applicable gates.
+The owner approved the theme/type/navigation and Linked Path foundation direction, then requested a functional application composition in place of promotional slogans, oversized feature cards and repeated containers. These captures reflect that refinement; exact production artwork and later feature screens remain reviewable at their applicable gates. See [composition allocation](APPLICATION_COMPOSITION.md).
 
 ## Three distinct letter-free link studies
 
@@ -22,7 +22,7 @@ Owner review: approve or revise the foundation composition, candidate type pair,
 - B — Relay Loop: rounder continuous handoff silhouette.
 - C — Directional Bridge: squat horizontal connection.
 
-The board includes native 16/24/32 px comparison. All are original studies with no letter/initial construction or supplied-art tracing. Owner concept selection, possible lookalikes, final small-size refinement and Android adaptive/monochrome production exports remain open. Temporary packaging assets do not imply final approval.
+The board includes native 16/24/32 px comparison. All are original studies with no letter/initial construction or supplied-art tracing. A is the owner-selected concept. Possible lookalikes, final small-size refinement and Android adaptive/monochrome production exports remain open. Temporary packaging assets do not imply final approval.
 
 ## Remaining screen and interaction studies
 
@@ -41,4 +41,20 @@ This table specifies the next design comparisons; it is not a claim those detail
 
 ## Approval record
 
-The owner explicitly selected “Approve foundation direction + A: Linked Path” on November 4, 2026, after reviewing this concrete comparison set. This approves the baseline composition, candidate font/theme/navigation direction and icon concept direction for Phase 0. B/C remain historical alternatives. Final small-size refinement/platform assets and later detailed screens remain open. This approval neither verifies compatibility nor authorizes Phase 1.
+The owner explicitly selected “Approve foundation direction + A: Linked Path” on November 4, 2026, after reviewing this concrete comparison set. This approves the font/theme/navigation and icon concept direction for Phase 0. The subsequent functional-composition refinement supersedes the earlier slogan/card-heavy layout; it does not reopen the approved direction. B/C remain historical alternatives. Final small-size refinement/platform assets and later detailed screens remain open. This approval neither verifies compatibility nor authorizes Phase 1.
+
+## Responsive composition verification
+
+Executed eight Playwright/Edge smoke tests on November 4: Desktop 1280×800, 1920×1080 and compact 800×900; Mobile web 360×800 and 430×932, plus 393×852 navigation/theme/search. Captures were visually inspected. No horizontal overflow was observed; inactive pairing stays disabled, access state is visible, local access/settings navigation and theme/search/reduced-motion regressions pass. Desktop keyboard focus traversal and Mobile bottom navigation height (at least 44 px) were checked. Full-page captures include vertically scrollable content and are not all viewport-height screenshots.
+
+![Desktop at 1280 pixels](evidence/desktop-1280.png)
+
+![Desktop at 1920 pixels](evidence/desktop-1920.png)
+
+![Compact Desktop](evidence/desktop-800.png)
+
+![Mobile at 360 pixels](evidence/mobile-360.png)
+
+![Mobile at 430 pixels](evidence/mobile-430.png)
+
+These checks are evidence of the foundation composition, not a complete screen-reader, high-DPI, text-scaling or physical-device accessibility audit. The actual Windows WebView separately passed permitted local-status, denied enrolled probe, nonexistent-command and Settings smoke checks after this refinement. Native Android results are recorded in the Phase 0 verification report, not inferred from these browser captures.

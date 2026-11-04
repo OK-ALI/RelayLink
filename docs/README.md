@@ -11,7 +11,7 @@ Phase 0 implementation is authorized and in progress. Phase 1 and later are not 
 
 ## Documentation map
 
-All project documentation belongs under `docs/`, now and in future changes. The repository root is reserved for source directories and build/tool configuration.
+All project documentation belongs under `docs/`, now and in future changes, except the owner-required minimal root `AGENTS.md` entry point. It points to the full governance rules. The repository root otherwise holds source directories and build/tool configuration.
 
 - [Mandatory agent instructions](governance/AGENTS.md)
 - [Setup and contributor workflow](development/CONTRIBUTING.md)
@@ -23,6 +23,8 @@ All project documentation belongs under `docs/`, now and in future changes. The 
 - [Available-device inventory](testing/DEVICE_MATRIX.md)
 - [Implementation acceptance gates](phases/phase-0/IMPLEMENTATION_GATES.md)
 - [Candidate branding guidelines](branding/GUIDELINES.md)
+- [Functional application composition](ui-ux/APPLICATION_COMPOSITION.md)
+- [Foundation review and screenshots](ui-ux/PHASE_0_REVIEW.md)
 - [License: all rights reserved](legal/LICENSE)
 - [Third-party notices](legal/THIRD_PARTY_NOTICES.md)
 
