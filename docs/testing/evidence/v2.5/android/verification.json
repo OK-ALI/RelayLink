@@ -1,0 +1,56 @@
+{
+  "result": "PASS",
+  "runtime": "actual Android API35 x86_64 emulator",
+  "captures": [
+    {
+      "theme": "amber",
+      "font": "baseline",
+      "status": "A · Baseline ready · 60 ms load · session only"
+    },
+    {
+      "theme": "amber",
+      "font": "plex",
+      "status": "B · Precision ready · 75 ms load · session only"
+    },
+    {
+      "theme": "amber",
+      "font": "editorial",
+      "status": "C · Editorial ready · 77 ms load · session only"
+    },
+    {
+      "theme": "light",
+      "font": "baseline",
+      "status": "A · Baseline ready · 72 ms load · session only"
+    },
+    {
+      "theme": "light",
+      "font": "plex",
+      "status": "B · Precision ready · 62 ms load · session only"
+    },
+    {
+      "theme": "light",
+      "font": "editorial",
+      "status": "C · Editorial ready · 65 ms load · session only"
+    }
+  ],
+  "modes": [
+    "performance",
+    "balanced",
+    "enhanced"
+  ],
+  "switchTargetDp": 48,
+  "sliderTargetDp": 48,
+  "previewVolume": 83,
+  "draggedVolume": 28,
+  "osReduced": "All Android animation scales 0 observed On; restored",
+  "scaling": "font_scale 1.3 captured; restored",
+  "originalBodyHeightPx": 56,
+  "scaledBodyHeightPx": 128,
+  "feedback": "Mute, manual play request, stop and haptic API request observed; audio/haptic perception NOT RUN",
+  "motion": "Native screen recording and gfxinfo; development/emulation diagnostic, not low-end performance acceptance",
+  "originalSystemScales": {
+    "animator_duration_scale": "1",
+    "transition_animation_scale": "1",
+    "window_animation_scale": "1"
+  }
+}

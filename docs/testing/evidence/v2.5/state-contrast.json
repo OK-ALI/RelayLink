@@ -1,0 +1,162 @@
+[
+  {
+    "platform": "Desktop",
+    "theme": "Obsidian Amber",
+    "selector": ".nav.active",
+    "foreground": [245, 241, 232],
+    "background": [40, 35, 30],
+    "ratio": 13.806196836889438
+  },
+  {
+    "platform": "Desktop",
+    "theme": "Obsidian Amber",
+    "selector": ".section-rail nav button[aria-current]",
+    "foreground": [245, 241, 232],
+    "background": [27, 35, 45],
+    "ratio": 14.061249895065217
+  },
+  {
+    "platform": "Desktop",
+    "theme": "Obsidian Amber",
+    "selector": ".type-options button[aria-pressed=true]",
+    "foreground": [245, 241, 232],
+    "background": [27, 35, 45],
+    "ratio": 14.061249895065217
+  },
+  {
+    "platform": "Desktop",
+    "theme": "Midnight Blue",
+    "selector": ".nav.active",
+    "foreground": [230, 240, 255],
+    "background": [19, 34, 59],
+    "ratio": 13.846536489149358
+  },
+  {
+    "platform": "Desktop",
+    "theme": "Midnight Blue",
+    "selector": ".section-rail nav button[aria-current]",
+    "foreground": [230, 240, 255],
+    "background": [22, 39, 62],
+    "ratio": 13.109165410843847
+  },
+  {
+    "platform": "Desktop",
+    "theme": "Midnight Blue",
+    "selector": ".type-options button[aria-pressed=true]",
+    "foreground": [230, 240, 255],
+    "background": [22, 39, 62],
+    "ratio": 13.109165410843847
+  },
+  {
+    "platform": "Desktop",
+    "theme": "Carbon Teal",
+    "selector": ".nav.active",
+    "foreground": [228, 250, 245],
+    "background": [17, 43, 40],
+    "ratio": 13.77943343413204
+  },
+  {
+    "platform": "Desktop",
+    "theme": "Carbon Teal",
+    "selector": ".section-rail nav button[aria-current]",
+    "foreground": [228, 250, 245],
+    "background": [24, 42, 42],
+    "ratio": 13.745736587528867
+  },
+  {
+    "platform": "Desktop",
+    "theme": "Carbon Teal",
+    "selector": ".type-options button[aria-pressed=true]",
+    "foreground": [228, 250, 245],
+    "background": [24, 42, 42],
+    "ratio": 13.745736587528867
+  },
+  {
+    "platform": "Desktop",
+    "theme": "Arctic Light",
+    "selector": ".nav.active",
+    "foreground": [32, 43, 56],
+    "background": [237, 230, 224],
+    "ratio": 11.608724692323946
+  },
+  {
+    "platform": "Desktop",
+    "theme": "Arctic Light",
+    "selector": ".section-rail nav button[aria-current]",
+    "foreground": [32, 43, 56],
+    "background": [233, 237, 242],
+    "ratio": 12.199248686250968
+  },
+  {
+    "platform": "Desktop",
+    "theme": "Arctic Light",
+    "selector": ".type-options button[aria-pressed=true]",
+    "foreground": [32, 43, 56],
+    "background": [233, 237, 242],
+    "ratio": 12.199248686250968
+  },
+  {
+    "platform": "Mobile web renderer",
+    "theme": "Obsidian Amber",
+    "state": "selected",
+    "foreground": [245, 241, 232],
+    "background": [27, 35, 45],
+    "ratio": 14.061249895065217
+  },
+  {
+    "platform": "Mobile web renderer",
+    "theme": "Obsidian Amber",
+    "state": "pressed",
+    "foreground": [245, 241, 232],
+    "background": [27, 35, 45],
+    "ratio": 14.061249895065217
+  },
+  {
+    "platform": "Mobile web renderer",
+    "theme": "Midnight Blue",
+    "state": "selected",
+    "foreground": [230, 240, 255],
+    "background": [22, 39, 62],
+    "ratio": 13.109165410843847
+  },
+  {
+    "platform": "Mobile web renderer",
+    "theme": "Midnight Blue",
+    "state": "pressed",
+    "foreground": [230, 240, 255],
+    "background": [22, 39, 62],
+    "ratio": 13.109165410843847
+  },
+  {
+    "platform": "Mobile web renderer",
+    "theme": "Carbon Teal",
+    "state": "selected",
+    "foreground": [228, 250, 245],
+    "background": [24, 42, 42],
+    "ratio": 13.745736587528867
+  },
+  {
+    "platform": "Mobile web renderer",
+    "theme": "Carbon Teal",
+    "state": "pressed",
+    "foreground": [228, 250, 245],
+    "background": [24, 42, 42],
+    "ratio": 13.745736587528867
+  },
+  {
+    "platform": "Mobile web renderer",
+    "theme": "Arctic Light",
+    "state": "selected",
+    "foreground": [32, 43, 56],
+    "background": [233, 237, 242],
+    "ratio": 12.199248686250968
+  },
+  {
+    "platform": "Mobile web renderer",
+    "theme": "Arctic Light",
+    "state": "pressed",
+    "foreground": [32, 43, 56],
+    "background": [233, 237, 242],
+    "ratio": 12.199248686250968
+  }
+]

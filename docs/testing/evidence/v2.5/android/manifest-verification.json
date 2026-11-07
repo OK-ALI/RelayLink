@@ -1,0 +1,20 @@
+{
+  "result": "PASS",
+  "permissions": [
+    "android.permission.SYSTEM_ALERT_WINDOW",
+    "android.permission.INTERNET",
+    "android.permission.MODIFY_AUDIO_SETTINGS",
+    "android.permission.READ_EXTERNAL_STORAGE",
+    "android.permission.VIBRATE",
+    "android.permission.WRITE_EXTERNAL_STORAGE",
+    "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.ACCESS_LOCAL_NETWORK",
+    "android.permission.WAKE_LOCK",
+    "com.relaylink.mobile.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "backgroundAudioServices": "absent",
+  "recordingPermission": "absent",
+  "apkSha256": "941db75c77ffbec4a777b3ffa089b01ff5bd40797fdddee06ea014c26f4f69f4",
+  "scope": "Development APK; inherited Expo developer permissions are not release approval"
+}

@@ -24,11 +24,20 @@ export default tseslint.config(
         window: 'readonly',
         localStorage: 'readonly',
         HTMLElement: 'readonly',
+        NodeFilter: 'readonly',
         navigator: 'readonly',
         fetch: 'readonly',
         AbortSignal: 'readonly',
       },
     },
     rules: { '@typescript-eslint/no-explicit-any': 'error' },
+  },
+  {
+    files: ['apps/mobile/plugins/*.cjs'],
+    languageOptions: {
+      sourceType: 'commonjs',
+      globals: { require: 'readonly', module: 'readonly' },
+    },
+    rules: { '@typescript-eslint/no-require-imports': 'off' },
   },
 );

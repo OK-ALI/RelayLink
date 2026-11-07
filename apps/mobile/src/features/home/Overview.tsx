@@ -16,7 +16,7 @@ export function Overview({ palette: t, body, heading, onAppearance, onSettings }
           <Text style={[body, s.small, { color: t.muted }]}>Not paired</Text>
         </View>
         <Text style={[body, s.note, { color: t.muted }]}>
-          No PC selected. Pairing is planned for Phase 1.
+          No PC selected. Pairing is unavailable in this preview.
         </Text>
         <View style={[s.access, { borderColor: t.elevated }]}>
           <View style={[s.dot, { backgroundColor: t.muted }]} />
@@ -27,24 +27,24 @@ export function Overview({ palette: t, body, heading, onAppearance, onSettings }
         <Text accessibilityRole="header" style={[heading, s.h2]}>
           Controls
         </Text>
-        <Text style={[body, s.small, { color: t.muted }]}>Not implemented</Text>
+        <Text style={[body, s.small, { color: t.muted }]}>Unavailable</Text>
       </View>
       {[
-        { name: 'PC Controls', detail: 'Pointer and keyboard', phase: 'Phase 3' },
-        { name: 'Media', detail: 'Playback and audio', phase: 'Phase 4' },
-        { name: 'Relay Decks', detail: 'Configured actions', phase: 'Phase 7' },
-        { name: 'Relay Pad', detail: 'Game profiles', phase: 'Phase 8' },
+        { name: 'PC Controls', detail: 'Pointer and keyboard' },
+        { name: 'Media', detail: 'Playback and audio' },
+        { name: 'Relay Decks', detail: 'Configured actions' },
+        { name: 'Relay Pad', detail: 'Game profiles' },
       ].map((item) => (
         <View key={item.name} style={[s.control, { borderColor: t.elevated }]}>
           <View>
             <Text style={[heading, s.controlName]}>{item.name}</Text>
             <Text style={[body, s.small, { color: t.muted }]}>{item.detail}</Text>
           </View>
-          <Text style={[body, s.phase, { color: t.muted }]}>Planned · {item.phase}</Text>
+          <Text style={[body, s.phase, { color: t.muted }]}>Unavailable</Text>
         </View>
       ))}
       <Text accessibilityRole="header" style={[heading, s.localTitle]}>
-        Application
+        Quick Access
       </Text>
       <Pressable
         accessibilityRole="button"
@@ -71,7 +71,7 @@ const s = StyleSheet.create({
   pc: { padding: 18, borderWidth: 1, borderRadius: 12 },
   row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 },
   h2: { fontSize: 17, letterSpacing: -0.3 },
-  small: { fontSize: 11, lineHeight: 18 },
+  small: { fontSize: 13, lineHeight: 18 },
   note: { fontSize: 12, lineHeight: 21, marginTop: 10, marginBottom: 18 },
   access: { borderTopWidth: 1, paddingTop: 13, flexDirection: 'row', alignItems: 'center', gap: 9 },
   dot: { width: 6, height: 6, borderRadius: 3 },
@@ -91,7 +91,7 @@ const s = StyleSheet.create({
     gap: 12,
   },
   controlName: { fontSize: 14, marginBottom: 3 },
-  phase: { fontSize: 9, lineHeight: 16 },
+  phase: { fontSize: 12, lineHeight: 16 },
   localTitle: { fontSize: 17, marginTop: 28, marginBottom: 8 },
   action: {
     minHeight: 48,

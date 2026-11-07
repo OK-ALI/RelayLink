@@ -4,7 +4,7 @@ Phase 0 is complete: required foundation checks, clean-runner CI and the remote 
 
 ## Current foundations
 
-- Windows: Tauri 2 + React/TypeScript/Vite, a candidate Command Center, navigation, searchable local settings, four candidate themes and actual native permission probes.
+- Windows: Tauri 2 + React/TypeScript/Vite, the Command Center foundation, Jump to Section settings, four approved theme directions and actual native permission probes.
 - Android: React Native + Expo SDK 58 Development Build + Expo Router; coordinated Home/settings/theme foundation. Native/device validation is reported separately from browser/export checks.
 - Shared: canonical JSON Schema, generated CSP-compatible validator/types, Rust/TypeScript shared fixtures, semantic design tokens and isolated product identity.
 - Verification: Node contract/regression/publication checks, Rust tests/Clippy, browser and native-webview smoke, clean-runner CI and native Android build/smoke procedures.
@@ -30,6 +30,17 @@ All project documentation belongs under `docs/`, now and in future changes, exce
 - [Third-party notices](legal/THIRD_PARTY_NOTICES.md)
 
 ## Controlling planning edition
+
+- [V2.5 master roadmap](planning/v2.5/RELAY_LINK_MASTER_ROADMAP_V2_5_20261105.md)
+- [V2.5 integration and preservation record](planning/v2.5/INTEGRATION_REPORT.md)
+- [V2.5 refinement acceptance gates](ui-ux/v2.5/IMPLEMENTATION_GATES.md)
+- [V2.5 design review and verification](ui-ux/v2.5/VERIFICATION_REPORT.md)
+- [Three native typography comparisons](ui-ux/v2.5/TYPOGRAPHY_REVIEW.md)
+- [Components, motion and feedback design](ui-ux/v2.5/DESIGN_SYSTEM.md)
+
+V2.5 authorizes refinement of the existing foundation only. Phase 0 remains complete at 4%; Phase 1 remains unauthorized. Font and sound candidates require owner review before permanent adoption.
+
+## Historical V2.4 edition
 
 - [V2.4 master roadmap](planning/v2.4/RELAY_LINK_MASTER_ROADMAP_V2_4.md)
 - [R01–R24 correction register](planning/v2.4/RELAY_LINK_V2_4_CORRECTION_REGISTER.md)

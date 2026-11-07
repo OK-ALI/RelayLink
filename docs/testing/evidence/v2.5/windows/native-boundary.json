@@ -1,0 +1,25 @@
+{
+  "result": "PASS",
+  "runtime": "actual Windows Tauri WebView2",
+  "boundary": {
+    "boundary_probe": {
+      "allowed": false,
+      "error": "boundary_probe not allowed. Permissions associated with this command: allow-boundary-probe"
+    },
+    "foundation_status": {
+      "allowed": true,
+      "value": {
+        "application": "relay-link",
+        "capabilities": [],
+        "controlEnabled": false,
+        "phase": 0,
+        "protocolVersion": 1
+      }
+    },
+    "windows_control": {
+      "allowed": false,
+      "error": "windows_control not allowed. Command not found"
+    }
+  },
+  "navigation": "Settings opened"
+}

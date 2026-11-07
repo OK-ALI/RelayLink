@@ -1,0 +1,15 @@
+{
+  "base_lines": 4218,
+  "new_lines": 4339,
+  "base_chars": 173622,
+  "new_chars": 197045,
+  "phase_rows_preserved": 14,
+  "phase_headers": 14,
+  "original_numbered_sections": 31,
+  "md_sha256": "06f3c9eba71ff82689413bdaa6d2bf22d70bf2597c4cfa65e32aee164d643b29",
+  "docs": [
+    "RELAY_LINK_MASTER_ROADMAP_V2_5_20261105.md",
+    "RELAY_LINK_V2_5_DESIGN_CHANGE_REGISTER_20261105.md",
+    "RELAY_LINK_V2_5_CODEX_DESIGN_REFINEMENT_HANDOFF_20261105.md"
+  ]
+}

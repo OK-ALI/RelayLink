@@ -1,0 +1,7 @@
+{
+  "result": "PASS",
+  "runtime": "actual API35 Android emulator",
+  "sliderTargetDp": 48,
+  "studyValueChanged": true,
+  "scope": "Scrolled component board; no product control actions"
+}

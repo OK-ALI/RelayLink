@@ -15,7 +15,24 @@
         "android.permission.READ_MEDIA_VIDEO"
       ]
     },
-    "plugins": ["expo-router", "expo-font", "expo-dev-client"],
-    "web": { "bundler": "metro", "output": "static" }
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-dev-client",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "enableBackgroundRecording": false,
+          "enableBackgroundPlayback": false
+        }
+      ],
+      "./plugins/withFontScale.cjs"
+    ],
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    }
   }
 }

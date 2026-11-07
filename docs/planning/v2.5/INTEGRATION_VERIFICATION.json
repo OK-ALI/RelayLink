@@ -1,0 +1,120 @@
+{
+  "date": "2026-11-05",
+  "scope": "V2.5 existing-foundation refinement only; phase0 remains PASS/4%; phase1 not authorized",
+  "sourceFilesSha256": {
+    "RELAY_LINK_MASTER_ROADMAP_V2_5_20261105.md": "06f3c9eba71ff82689413bdaa6d2bf22d70bf2597c4cfa65e32aee164d643b29",
+    "RELAY_LINK_V2_5_DESIGN_CHANGE_REGISTER_20261105.md": "27e2bc52f1854d8a6c8dfab893dd0e0b4c70c571ef7b78db0dcac2ec9019b23b",
+    "RELAY_LINK_V2_5_CODEX_DESIGN_REFINEMENT_HANDOFF_20261105.md": "d1370917a97a8fa69191f892916da4b8eb2ba7e53e43f3094bed604c3f1e29a2",
+    "RELAY_LINK_V2_5_PACKAGE_VALIDATION_20261105.json": "e728c74362cbeb81a8f8abc7903066025f3137eb3dcfde7ff0fbcef85241fe61"
+  },
+  "integratedMasterSha256": "8112540660d0bc8ee113cba72fbf30fbfcf6831342f082ec9fb880024d14982a",
+  "phaseRows": [
+    [
+      "0",
+      "4",
+      "4"
+    ],
+    [
+      "1",
+      "6",
+      "10"
+    ],
+    [
+      "2",
+      "8",
+      "18"
+    ],
+    [
+      "3",
+      "10",
+      "28"
+    ],
+    [
+      "4",
+      "8",
+      "36"
+    ],
+    [
+      "5",
+      "6",
+      "42"
+    ],
+    [
+      "6",
+      "7",
+      "49"
+    ],
+    [
+      "7",
+      "7",
+      "56"
+    ],
+    [
+      "8",
+      "10",
+      "66"
+    ],
+    [
+      "9",
+      "10",
+      "76"
+    ],
+    [
+      "10",
+      "7",
+      "83"
+    ],
+    [
+      "11",
+      "4",
+      "87"
+    ],
+    [
+      "12",
+      "8",
+      "95"
+    ],
+    [
+      "13",
+      "5",
+      "100"
+    ]
+  ],
+  "unchangedHistoricalFiles": {
+    "docs/planning/v2.4/DOCUMENTATION_VERIFICATION.json": "8c1d8e3424a752d9178880c0836cabf359a19ae98d4a21153533cec3955f4509",
+    "docs/planning/v2.4/HISTORICAL_SOURCE_SHA256.json": "f64a3a313038e199b317db1f724df9e6ac099b51673029b4401ade241588cfa5",
+    "docs/planning/v2.4/RELAY_LINK_MASTER_ROADMAP_V2_4.md": "661eaee3ad6f2cd71597e702a1f8764ed14e69252b10288c0a45802058b2e948",
+    "docs/planning/v2.4/RELAY_LINK_V2_4_CORRECTION_REGISTER.md": "490f09c3a71e4ef985144c9e8ee863ad6a3b0485dc2114ef2ea52ea12cc1f3e2",
+    "docs/planning/v2.4/RELAY_LINK_V2_4_DESIGN_DECISIONS.md": "9c863b917ceedc5f8645c3a24a23d2312ee5acf372325f258f331798a9711b68",
+    "docs/planning/v2.4/RELAY_LINK_V2_4_PHASE_0_READINESS.md": "970ca35a2465169d7741a5fe7b3e4f0a6e932dfde204c52c1181d6e7678cd0f5",
+    "docs/planning/v2.4/RELAY_LINK_V2_4_VALIDATION_PLAN.md": "44247ee972504042fcadac42b45a2b5f6934d00a24ba5594c234f2f670dcb3ac",
+    "docs/phases/phase-0/IMPLEMENTATION_GATES.md": "6ad6bb675e24439d6e6fbf56ed5c59267cdfc941d9a12ad47055e3fa094c5f25",
+    "docs/phases/phase-0/VERIFICATION_REPORT.md": "048e1636054e599a7d3f3bb740d6a091463f4b563662b77796a0ffa38424f933",
+    "docs/ui-ux/PHASE_0_REVIEW.md": "ce94bbe24311d883a267e099188e7ff7eaa8b6824b9d7bbdd0819376c0e1971b",
+    "docs/testing/evidence/desktop-release-resource-sample.json": "8621bb09ef7cad5675aa15966ff71fbe724c437ab71dacf996db8c5ed1a79d28",
+    "docs/governance/AGENTS.md": "f487ad884e24d330d1b7809531e76068b8f0cb6d545045154855ba8483c7a783",
+    "apps/desktop/src-tauri/capabilities/main.json": "90f65df6896d9c5a07d146fd7b65b8e8234996fa24498445e625270a96d31a9d",
+    "apps/desktop/src-tauri/build.rs": "85887f49b3315484a61ab706cb6414626d3c21885b9bfca6e4e85601be04998c",
+    "apps/desktop/src-tauri/src/main.rs": "17631672cc33fff1bf21e5b1b12f5e99df4f8633447b0629326d5532675ce1f8"
+  },
+  "corrections": [
+    "preserve docs-only organization/root AGENTS exception",
+    "repair historical validation link",
+    "preserve owner-selected Linked Path concept",
+    "carry actual pinned Orion v3 provenance",
+    "clarify existing workspace/repository and license",
+    "retain completed Phase 0 report/checkpoint and 4% progress",
+    "record owner product-language clarification; keep normal UI device-oriented and progress in About"
+  ],
+  "allowedUiChanges": {
+    "apps/desktop/src-tauri/tauri.conf.json": {
+      "beforeSha256": "68b5a444abe1f420b2accc963965438b170bd34110075939e64c36ceac316598",
+      "titleBefore": "Relay Link — Foundation",
+      "titleAfter": "Relay Link",
+      "normalizedSha256": "a35b858728e1b7944dfc3a603781103331d375070b23a406de0814188c9ab414",
+      "reason": "Owner product-language correction; only the window caption changes. All other configuration, including CSP and authority, is fingerprinted."
+    }
+  },
+  "historicalHashEncoding": "UTF-8, CRLF normalized to LF: exact pre-refinement Git repository blobs",
+  "crossPlatformHashVerificationDate": "2026-11-07"
+}

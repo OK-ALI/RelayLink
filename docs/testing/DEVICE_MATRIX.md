@@ -37,3 +37,9 @@ This release result remains above the provisional 200 MB target on private-memor
 Planned product targets remain Windows Desktop and Android Mobile. Actually exercised: the available Windows 11 host and API 35 x86_64 emulator, not all Windows/Android releases or physical ARM64 devices. Current generated Android toolchain uses min SDK 24, compile SDK 37 and target SDK 36; those build values do not establish product support for every corresponding OS. The Windows host's production-support eligibility is unverified. Freeze the actual OS/security lifecycle allowlist and named hardware before compatibility claims at the applicable later gates; no invented minimum hardware or broad OS support guarantee is added here.
 
 The local Windows Android build subsequently passed with short pnpm directories, verified Ninja and compact CMake staging. The earlier failing attempts remain recorded in [the build correction record](../development/ANDROID_WINDOWS_BUILD.md).
+
+## V2.5 refinement inventory — November 7, 2026
+
+The same available Windows host is used; no representative low-end PC or physical Android/ARM64 device has become available. A dedicated `relay-link-v25-api35` Pixel 6 emulator uses API35 Google APIs x86_64, four virtual cores, 3 GiB RAM and software graphics. The original Phase 0 AVD is retained separately. Density/rotation/text-scale changes are temporary test settings, not additional physical devices or broader support certification.
+
+The V2.5 review records actual Windows/Android UI, release-memory observations and a short idle app-descendant GPU counter diagnostic. These do not replace physical device, tray, game, battery, OS DPI or assistive-technology acceptance. See [the separate refinement report](../ui-ux/v2.5/VERIFICATION_REPORT.md) for actual final results and remaining checks. The historical Phase 0 measurements above remain unchanged.

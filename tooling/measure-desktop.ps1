@@ -1,12 +1,14 @@
 param(
     [int]$DurationSeconds = 600,
-    [int]$IntervalSeconds = 5
+    [int]$IntervalSeconds = 5,
+    [string]$EvidenceName = 'desktop-release-resource-sample.json'
 )
 $ErrorActionPreference = 'Stop'
 if ($DurationSeconds -lt 10 -or $IntervalSeconds -lt 1) { throw 'Use at least ten seconds and a positive sample interval.' }
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $applicationPath = Join-Path $projectRoot 'target/release/relay-link-desktop.exe'
-$outputPath = Join-Path $projectRoot 'artifacts-local/desktop-release-resource-sample.json'
+if ([System.IO.Path]::GetFileName($EvidenceName) -ne $EvidenceName -or -not $EvidenceName.EndsWith('.json')) { throw 'EvidenceName must be a simple JSON filename.' }
+$outputPath = Join-Path $projectRoot "artifacts-local/$EvidenceName"
 if (-not (Test-Path -LiteralPath $applicationPath)) { throw 'Build the embedded release executable first.' }
 
 function Get-AppProcesses([int]$RootId) {

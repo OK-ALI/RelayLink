@@ -2,26 +2,23 @@ import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { setTimeout as delay } from 'node:timers/promises';
+import { performance } from 'node:perf_hooks';
+import { visibleTarget } from './android-ui.mjs';
 
 const adb = (...args) => execFileSync('adb', args, { encoding: 'utf8', timeout: 20000 });
 const dump = () => {
-  adb('shell', 'uiautomator', 'dump', '/sdcard/relay-link-ui.xml');
+  const result = adb('shell', 'uiautomator', 'dump', '/sdcard/relay-link-ui.xml');
+  assert.match(
+    result,
+    /dumped to:/,
+    'UIAutomator did not produce a fresh snapshot; never read stale evidence',
+  );
   return adb('exec-out', 'cat', '/sdcard/relay-link-ui.xml');
 };
 function tap(xml, label) {
-  const nodes = xml.match(/<node\b[^>]+>/g) ?? [];
-  const node =
-    nodes.find((item) => item.includes(`content-desc="${label}"`)) ??
-    nodes.find((item) => item.includes(`text="${label}"`));
-  const bounds = node?.match(/bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"/);
-  assert(bounds, `Native Android node not found: ${label}`);
-  adb(
-    'shell',
-    'input',
-    'tap',
-    String(Math.floor((Number(bounds[1]) + Number(bounds[3])) / 2)),
-    String(Math.floor((Number(bounds[2]) + Number(bounds[4])) / 2)),
-  );
+  const target = visibleTarget(xml, label);
+  assert(target, `Visible native Android node not found: ${label}`);
+  adb('shell', 'input', 'tap', String(target.x), String(target.y));
 }
 await mkdir('artifacts-local', { recursive: true });
 await writeFile(
@@ -35,23 +32,25 @@ try {
     'Use the dedicated test emulator',
   );
   adb('reverse', 'tcp:8081', 'tcp:8081');
+  adb('logcat', '-c'); // Dedicated emulator only; prior failures are preserved before a retry.
   adb('shell', 'am', 'force-stop', 'com.relaylink.mobile');
   adb(
     'shell',
     'am',
     'start',
+    '-n',
+    'com.relaylink.mobile/.MainActivity',
     '-a',
     'android.intent.action.VIEW',
     '-d',
     'exp+relay-link://expo-development-client/?url=http%3A%2F%2F127.0.0.1%3A8081',
-    'com.relaylink.mobile',
   );
   let xml = '';
-  const startupDeadline = Date.now() + 180000;
+  const startupDeadline = performance.now() + 180000;
   let introductionDismissed = false;
   let menuClosed = false;
   let launcherRecoveries = 0;
-  while (Date.now() < startupDeadline) {
+  while (performance.now() < startupDeadline) {
     await delay(1000);
     try {
       xml = dump();
@@ -91,81 +90,29 @@ try {
   );
   await writeFile(
     'artifacts-local/android-home.png',
-    execFileSync('adb', ['exec-out', 'screencap', '-p']),
+    execFileSync('adb', ['exec-out', 'screencap', '-p'], { maxBuffer: 16 * 1024 * 1024 }),
   );
-  tap(xml, 'Settings');
-  await delay(1000);
-  xml = dump();
-  assert(xml.includes('Appearance'), 'Actual Android Settings did not open');
-  tap(xml, 'Search settings');
-  adb('shell', 'input', 'text', 'privacy');
-  await delay(500);
-  xml = dump();
-  assert(xml.includes('Privacy and access'), 'Actual Android settings search failed');
-  adb('shell', 'input', 'keyevent', ...Array(7).fill('67'));
-  adb('shell', 'input', 'keyevent', '4');
-  await delay(700);
-  xml = dump();
-  tap(xml, 'Carbon Teal');
-  await delay(500);
-  xml = dump();
-  assert(
-    xml
-      .match(/<node\b[^>]+>/g)
-      ?.some(
-        (node) => node.includes('content-desc="Carbon Teal"') && node.includes('selected="true"'),
-      ),
-    'Native theme selection was not reflected',
-  );
-  tap(xml, 'Reduce motion');
-  await delay(500);
-  xml = dump();
-  assert(
-    xml
-      .match(/<node\b[^>]+>/g)
-      ?.some(
-        (node) => node.includes('content-desc="Reduce motion"') && node.includes('checked="true"'),
-      ),
-    'Native reduced-motion switch did not turn on',
-  );
-  const switchNode = xml
-    .match(/<node\b[^>]+>/g)
-    ?.find((node) => node.includes('content-desc="Reduce motion"'));
-  const switchBounds = switchNode?.match(/bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"/);
-  const densityValues = [...adb('shell', 'wm', 'density').matchAll(/density:\s*(\d+)/g)];
-  assert(switchBounds && densityValues.length, 'Missing native target measurement');
-  const density = Number(densityValues.at(-1)[1]) / 160;
-  const switchTargetDp = (Number(switchBounds[4]) - Number(switchBounds[2])) / density;
-  assert(switchTargetDp >= 44, `Native switch target too small: ${switchTargetDp} dp`);
-  await writeFile('artifacts-local/android-settings.xml', xml);
-  await writeFile(
-    'artifacts-local/android-shell.png',
-    execFileSync('adb', ['exec-out', 'screencap', '-p']),
-  );
+  const { verifyAndroidDesign } = await import('./verify-android-design.mjs');
+  const refinement = await verifyAndroidDesign({ adb, dump, tap });
   await writeFile(
     'artifacts-local/android-smoke.json',
     JSON.stringify(
       {
         result: 'PASS',
-        runtime: 'actual Android emulator development build',
+        runtime: 'actual Android API35 emulator development build',
         home: 'disabled control visible',
-        settings: 'opened',
-        search: 'privacy found',
-        theme: 'Carbon Teal selected',
-        reducedMotion: 'native switch checked',
-        physicalDevice: 'NOT RUN',
+        refinement,
         developmentIntroductionDismissed: introductionDismissed,
         developmentMenuClosed: menuClosed,
         emulatorLauncherRecoveries: launcherRecoveries,
-        androidApi: adb('shell', 'getprop', 'ro.build.version.sdk').trim(),
-        switchTargetDp,
+        physicalDevice: 'NOT RUN',
       },
       null,
       2,
     ) + '\n',
   );
   console.log(
-    'PASS: actual Android development build opened Home, Settings and privacy search. Physical-device behavior is not claimed.',
+    'PASS: actual Android Jump, themes, typography and motion/feedback demonstrations verified. Physical sensation is not claimed.',
   );
 } catch (error) {
   await writeFile(

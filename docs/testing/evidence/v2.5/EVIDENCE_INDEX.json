@@ -1,0 +1,371 @@
+{
+  "scope": "Actual local review artifacts, November 5-7, 2026. See the verification report for per-check scope, corrections and limitations. No physical-device or release-performance acceptance.",
+  "files": [
+    {
+      "path": "android/about-progress-information.png",
+      "bytes": 176313,
+      "sha256": "6801b208e79eb9c246a0ad00373cbe923f70fb503c67242c3d73d1cdae657917"
+    },
+    {
+      "path": "android/about-reopened.png",
+      "bytes": 176284,
+      "sha256": "c7e6cf46bae1e8ef5d5682d9f298aea460d3fe05002d6a879418b35627ef0712"
+    },
+    {
+      "path": "android/baseline-amber-home.png",
+      "bytes": 200492,
+      "sha256": "ab938988c5e5760590481142ed42f522b60894b3c7077a11ff25b0edbede4c05"
+    },
+    {
+      "path": "android/baseline-amber-settings.png",
+      "bytes": 172213,
+      "sha256": "2e3a2e74f2e93fb4626d6c41eedecaec7a6548f42e78ecef350c16ab84560977"
+    },
+    {
+      "path": "android/baseline-light-home.png",
+      "bytes": 198951,
+      "sha256": "458ca6550396f9d07dcf9e74bb1e7df0f1998d2159caea191849f4c827f9979a"
+    },
+    {
+      "path": "android/baseline-light-settings.png",
+      "bytes": 186082,
+      "sha256": "2f3c6e0373e2b57198b654e67e1f034f72964ed71f64016beb5e606dc71a6bd9"
+    },
+    {
+      "path": "android/component-study-controls.png",
+      "bytes": 148040,
+      "sha256": "22092dfc3d32cc394b31583ba846944eb92f9bcb2db45b3d669193458fb3d133"
+    },
+    {
+      "path": "android/component-study-dark.png",
+      "bytes": 155364,
+      "sha256": "5d8d006bb42b021d2fd66d424c4e435d684cc6a8859f6567972cda68e2e56702"
+    },
+    {
+      "path": "android/component-study-light.png",
+      "bytes": 155992,
+      "sha256": "3f8923a3139dec053036b2f51720e15b391d3f3c19708000278127f5c91e570e"
+    },
+    {
+      "path": "android/component-study-verification.json",
+      "bytes": 189,
+      "sha256": "759ef8680312284adf6d65c07f5ad13706785046bfae66553ba51f21dabb4ffa"
+    },
+    {
+      "path": "android/density-400-privacy.png",
+      "bytes": 187443,
+      "sha256": "0ce8068f0adcdca1f382f399ae0f9c4050aef321271c06ec0bf10168077d24db"
+    },
+    {
+      "path": "android/density-480-privacy.png",
+      "bytes": 204363,
+      "sha256": "d1e8c0102d07bff3731b99b6d7d0196682f9f82832f1c837487a1ccec7f43197"
+    },
+    {
+      "path": "android/editorial-amber-home.png",
+      "bytes": 196815,
+      "sha256": "7525e9880e687ab0a06db3a1667cd39b52da56ae909140df227604931fe42507"
+    },
+    {
+      "path": "android/editorial-amber-settings.png",
+      "bytes": 167083,
+      "sha256": "a03d802afd12b080d4ee07354481437ee6e6703196ab0e9929315f56e9a1a878"
+    },
+    {
+      "path": "android/editorial-light-home.png",
+      "bytes": 197291,
+      "sha256": "6bafe858b908fed0841fb5cd0fa0e889d3d0ccda9d1bc9d94b9f866f5627b276"
+    },
+    {
+      "path": "android/editorial-light-settings.png",
+      "bytes": 167975,
+      "sha256": "cfa59be586f279abdd86ae8b07c5b5e693e016ee467780520382f4d2a6192fb9"
+    },
+    {
+      "path": "android/feedback-demonstration.png",
+      "bytes": 249927,
+      "sha256": "d97676a46ecb8653efb0907787d4e9bee370924518a04743dcbbbad11ffcfc97"
+    },
+    {
+      "path": "android/font-scale-130.png",
+      "bytes": 233287,
+      "sha256": "fa71917262f5a5ab8d2631dabaa4aa6c41ab16d5b08acbe264c69b625bb5be71"
+    },
+    {
+      "path": "android/font-scale-130.xml",
+      "bytes": 24463,
+      "sha256": "6f6f4026389a594f3443cc016c6a58635e3971c1a9e78eb1640652721c73935a"
+    },
+    {
+      "path": "android/font-scale-lifecycle-probe.json",
+      "bytes": 125,
+      "sha256": "51fbf4a15257869bd05db088dadac0e84e50e8874cdc469139e994671fcd7b8b"
+    },
+    {
+      "path": "android/gfxinfo.txt",
+      "bytes": 40278,
+      "sha256": "de70cd60924d8945348c24e197d4a50ad253aaf71b5ff6efbb97c130f8dfc504"
+    },
+    {
+      "path": "android/jump-picker.png",
+      "bytes": 170945,
+      "sha256": "3c124f74e5b79cd347fa6203ed6101013e8e9212573565bfd1c467b9a4a971e9"
+    },
+    {
+      "path": "android/jump-search-keyboard.png",
+      "bytes": 175223,
+      "sha256": "27a99cb6d105c6df7ef1ff96984320942def59e86f99b0d2f6d2002fb9a2904c"
+    },
+    {
+      "path": "android/landscape-privacy-controls.png",
+      "bytes": 121985,
+      "sha256": "5ae50be7176bb8f5447f83e081adb45eb8859aeed06d9ede7ef78090ade90216"
+    },
+    {
+      "path": "android/landscape-privacy.png",
+      "bytes": 97095,
+      "sha256": "64318c0ff7125589e4fa8eb77d17d222b99b0d2dacd0df17d9d814be603c714d"
+    },
+    {
+      "path": "android/layout-verification.json",
+      "bytes": 580,
+      "sha256": "7e3933af75c114bd061ff2c52e9f36a1020db9700f742ce17af08d32557e6099"
+    },
+    {
+      "path": "android/manifest-verification.json",
+      "bytes": 809,
+      "sha256": "8998ec6f9cde103c5c595e9b3ceb90ea5b2b4620e39615ef2b10571cf83d4f9b"
+    },
+    {
+      "path": "android/memory.txt",
+      "bytes": 2966,
+      "sha256": "ef01fd3c4def34386a2a5cec3333c0e895e1b2d7eae3d4d8822a8cc3005f6f1d"
+    },
+    {
+      "path": "android/motion-demonstration.mp4",
+      "bytes": 543590,
+      "sha256": "2203c0fc133bf6327c0beca99b113beb1a368860c7fd893f8d7bfe18611f285d"
+    },
+    {
+      "path": "android/plex-amber-home.png",
+      "bytes": 192051,
+      "sha256": "255b7c6a6a4eaf696b29174f35b57b1509995da7b1631b34777d7f4c90670e5b"
+    },
+    {
+      "path": "android/plex-amber-settings.png",
+      "bytes": 164993,
+      "sha256": "f931403f8a7af1fe5e7216adfcf1e53a2dd9a2ad24b30366499f4b8148cec580"
+    },
+    {
+      "path": "android/plex-light-home.png",
+      "bytes": 192154,
+      "sha256": "9e4c16c67b3f98e3dec6ca978d1a8247bcffd1cb20db99260840781cc4878a2f"
+    },
+    {
+      "path": "android/plex-light-settings.png",
+      "bytes": 165202,
+      "sha256": "2bbb76979c9c4b0ca928485f38b9c32a4a9728059f9670689e76dcf281f6f620"
+    },
+    {
+      "path": "android/reduced-motion.png",
+      "bytes": 200966,
+      "sha256": "2476899280384036a04c036a7345d37c7d17042ccf04729eec8c838888dfd443"
+    },
+    {
+      "path": "android/system-reduced-motion.png",
+      "bytes": 201153,
+      "sha256": "7db2a5f8135b7ed8601f265386abc74f99995509afb3f9d77c05abf5aec2acca"
+    },
+    {
+      "path": "android/theme-amber.png",
+      "bytes": 185663,
+      "sha256": "202d2896cd17c916a3e1a4764e2f18ee700ea00cf0a98e4fab388edbc37fedfe"
+    },
+    {
+      "path": "android/theme-blue.png",
+      "bytes": 185183,
+      "sha256": "746d13dd5d6795a2cc90844b908cf1b22bc5793e189e7b40ca730eec86f278ce"
+    },
+    {
+      "path": "android/theme-light.png",
+      "bytes": 186386,
+      "sha256": "5f0378ab5526ffb9c74382cd61fd2ecfaf90f03ca506936b78fd4d94ac22f18e"
+    },
+    {
+      "path": "android/theme-teal.png",
+      "bytes": 185708,
+      "sha256": "6f7b45c0590e9d2455bfa064b9ed52c0ee571825d583cb050fb12b9c8525667c"
+    },
+    {
+      "path": "android/verification.json",
+      "bytes": 1599,
+      "sha256": "18e1618f44f200d0d49f9d2e2826eddda8d0ad06bec37653058fb1e1eb5c4726"
+    },
+    {
+      "path": "browser-results.json",
+      "bytes": 2937,
+      "sha256": "b4e3077dc26836158d8328b3ddbba2b66ed003d1294342e66cc54ae6e584d78f"
+    },
+    {
+      "path": "font-audit.json",
+      "bytes": 3650,
+      "sha256": "6e57c8b60e39309245e991842442ae0f39b1266950c4852e1e63c2e58be489de"
+    },
+    {
+      "path": "state-contrast.json",
+      "bytes": 4176,
+      "sha256": "415b5e688073668e6bb353dd74c8a17ece81746348e47769a00efc7eeb90a2c5"
+    },
+    {
+      "path": "windows/baseline-amber-home.png",
+      "bytes": 136922,
+      "sha256": "027f1f11e83504b9fd11f608cf6e219c68879d598ab4f773fe915e66965eab7f"
+    },
+    {
+      "path": "windows/baseline-amber-settings.png",
+      "bytes": 127092,
+      "sha256": "be55c755f442e7d489545819a8e33c5db4766773b129448121f4d2d7fd18977c"
+    },
+    {
+      "path": "windows/baseline-light-home.png",
+      "bytes": 136685,
+      "sha256": "fe304f76283fbe447bf9cf0e68d3d6b3cb685ee09923294c549b1214ff7baac0"
+    },
+    {
+      "path": "windows/baseline-light-settings.png",
+      "bytes": 126551,
+      "sha256": "aeb35fdcf344fa1c25e771e48ce409bb185547152bab83daa64d19e307b24501"
+    },
+    {
+      "path": "windows/component-study-dark.png",
+      "bytes": 130976,
+      "sha256": "33098c73363a2e92b7d8ad170e0d22ee8d51113ed0109f0ed49bad5c801da77a"
+    },
+    {
+      "path": "windows/component-study-light.png",
+      "bytes": 130980,
+      "sha256": "c4112b314ff81d5a7a6a0de7c0b01b864aac03db369464551bea41581cc644d2"
+    },
+    {
+      "path": "windows/content-zoom-200.png",
+      "bytes": 146832,
+      "sha256": "79a751ae09a06b760e74519966103ef779dbd98e904e1446fd31742ae999b1f0"
+    },
+    {
+      "path": "windows/editorial-amber-home.png",
+      "bytes": 129320,
+      "sha256": "5415b6fe1de4b38c4d42578267dea03ed4bbfb0456d0c042e819805e8f1643ce"
+    },
+    {
+      "path": "windows/editorial-amber-settings.png",
+      "bytes": 125633,
+      "sha256": "b307ad0f6289e3b0eaa4014fe2d3da30145de349680eef8ba74107ac4ba13c42"
+    },
+    {
+      "path": "windows/editorial-light-home.png",
+      "bytes": 128911,
+      "sha256": "40f81635b5b80fbaade847e11ca9d890f93c5c50e26f54769fd6ab551a53567a"
+    },
+    {
+      "path": "windows/editorial-light-settings.png",
+      "bytes": 125613,
+      "sha256": "90bbb398c85e333b29b163ded223314ce129b544b41de0629814c6b1bc05e6ce"
+    },
+    {
+      "path": "windows/feedback-demonstration.png",
+      "bytes": 108988,
+      "sha256": "ee2800e6d18cef81783165f64489bbc2918341f425772f462d7cb60b9e0a0657"
+    },
+    {
+      "path": "windows/final-binary-short-sample.json",
+      "bytes": 2784,
+      "sha256": "aaff738c3a253f8967b16630da73323eca0673cb05271c7169b838d7809fa055"
+    },
+    {
+      "path": "windows/gpu-diagnostic.json",
+      "bytes": 206,
+      "sha256": "ae4275a4c90170bf2a2dccdfd20177f044da44dbf4240b3f1f3f3d6419bfa05d"
+    },
+    {
+      "path": "windows/jump-picker.png",
+      "bytes": 103540,
+      "sha256": "8cfcd0166cad503a6089f979a8a3eab126cda116a8878cff0288f77fb9116e8e"
+    },
+    {
+      "path": "windows/native-boundary.json",
+      "bytes": 636,
+      "sha256": "6402713011c84d88644151f6f4d2e8805df9b5a028babe352f3360d5222ef609"
+    },
+    {
+      "path": "windows/plex-amber-home.png",
+      "bytes": 115347,
+      "sha256": "d0b133a4843b51db82beda93fc7c082033bbc3a251cdc486dfdf7abca26fc0b1"
+    },
+    {
+      "path": "windows/plex-amber-settings.png",
+      "bytes": 115224,
+      "sha256": "c6bba48160c8d73360e81c92994eb7bbe65e01f8ff1bebe47b881a4002852703"
+    },
+    {
+      "path": "windows/plex-light-home.png",
+      "bytes": 115791,
+      "sha256": "0f599d2b8367b203d7fef392a1598a2817249f7f8248712b23fc378d34504eaf"
+    },
+    {
+      "path": "windows/plex-light-settings.png",
+      "bytes": 115579,
+      "sha256": "2d2a7c93c9a903eca29a119dec6164d3aa2cc36b80bec4d43523159ae76baf7a"
+    },
+    {
+      "path": "windows/release-resource-sample.json",
+      "bytes": 20101,
+      "sha256": "ead2c40b865cb8e20823fa7ee079055ae8b450d3daef75ced5016b9ea46ca7c2"
+    },
+    {
+      "path": "windows/responsive-1280.png",
+      "bytes": 120498,
+      "sha256": "11ca1c8d28e74d1cadae647f0918da1db74437d41e37da85db44bbe0f6c81610"
+    },
+    {
+      "path": "windows/responsive-1920.png",
+      "bytes": 149399,
+      "sha256": "3f521b823317bbc05ed25619ce38f52ee32ffede994f7bbfa4004c95e435e0ef"
+    },
+    {
+      "path": "windows/responsive-800.png",
+      "bytes": 95034,
+      "sha256": "487273c8559cf4860a10c116780a2af4de7b06d55e4e0986f7d7507376b27c8c"
+    },
+    {
+      "path": "windows/theme-amber.png",
+      "bytes": 136922,
+      "sha256": "027f1f11e83504b9fd11f608cf6e219c68879d598ab4f773fe915e66965eab7f"
+    },
+    {
+      "path": "windows/theme-blue.png",
+      "bytes": 136154,
+      "sha256": "4db9839f0eae468d9b15092c26cd537de72a9d40f1cea738c4b33383f4cd3a0c"
+    },
+    {
+      "path": "windows/theme-light.png",
+      "bytes": 136685,
+      "sha256": "fe304f76283fbe447bf9cf0e68d3d6b3cb685ee09923294c549b1214ff7baac0"
+    },
+    {
+      "path": "windows/theme-teal.png",
+      "bytes": 136444,
+      "sha256": "c7ec0a0df4c75c2706d48ca95fa96e238dc8e428c615879081cdeb1f20b58d90"
+    },
+    {
+      "path": "windows/verification.json",
+      "bytes": 3145,
+      "sha256": "7f22aac1e1319f7c8882a8a1e6ffdcfab5f81ec1b536d35c056df595db56890a"
+    }
+  ],
+  "androidFilteredRuntimeErrors": {
+    "query": "ReactNativeJS:E AndroidRuntime:E *:S",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "storage": "Raw logs remain ignored; the native suite requires no matching error entries before PASS."
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "result": "PASS",
+  "runtime": "actual Tauri Windows WebView2",
+  "fonts": [
+    {
+      "theme": "amber",
+      "font": "baseline",
+      "body": "Manrope, sans-serif",
+      "heading": "\"Space Grotesk\", Manrope, sans-serif",
+      "height": 900,
+      "overflow": false,
+      "status": "A · Baseline ready · 2 ms load · session only",
+      "width": 1280
+    },
+    {
+      "theme": "amber",
+      "font": "plex",
+      "body": "\"IBM Plex Sans\", sans-serif",
+      "heading": "\"IBM Plex Sans\", Manrope, sans-serif",
+      "height": 900,
+      "overflow": false,
+      "status": "B · Precision ready · 30 ms load · session only",
+      "width": 1280
+    },
+    {
+      "theme": "amber",
+      "font": "editorial",
+      "body": "\"Source Sans 3\", sans-serif",
+      "heading": "Fraunces, Manrope, sans-serif",
+      "height": 900,
+      "overflow": false,
+      "status": "C · Editorial ready · 29 ms load · session only",
+      "width": 1280
+    },
+    {
+      "theme": "light",
+      "font": "baseline",
+      "body": "Manrope, sans-serif",
+      "heading": "\"Space Grotesk\", Manrope, sans-serif",
+      "height": 900,
+      "overflow": false,
+      "status": "A · Baseline ready · 1 ms load · session only",
+      "width": 1280
+    },
+    {
+      "theme": "light",
+      "font": "plex",
+      "body": "\"IBM Plex Sans\", sans-serif",
+      "heading": "\"IBM Plex Sans\", Manrope, sans-serif",
+      "height": 900,
+      "overflow": false,
+      "status": "B · Precision ready · 1 ms load · session only",
+      "width": 1280
+    },
+    {
+      "theme": "light",
+      "font": "editorial",
+      "body": "\"Source Sans 3\", sans-serif",
+      "heading": "Fraunces, Manrope, sans-serif",
+      "height": 900,
+      "overflow": false,
+      "status": "C · Editorial ready · 1 ms load · session only",
+      "width": 1280
+    }
+  ],
+  "frames": [
+    {
+      "animations": 0,
+      "duration": "0ms",
+      "elapsed": 3003.699999997021,
+      "frames": 624,
+      "max": 7.799999999999272,
+      "maxAnimations": 0,
+      "mode": "performance",
+      "p95": 5.5
+    },
+    {
+      "animations": 1,
+      "duration": "160ms",
+      "elapsed": 3004.499999991058,
+      "frames": 625,
+      "max": 10,
+      "maxAnimations": 1,
+      "mode": "balanced",
+      "p95": 5.400000000001455
+    },
+    {
+      "animations": 1,
+      "duration": "220ms",
+      "elapsed": 3003.899999994039,
+      "frames": 629,
+      "max": 9.400000000001455,
+      "maxAnimations": 1,
+      "mode": "enhanced",
+      "p95": 5.200000000000728
+    },
+    {
+      "animations": 0,
+      "duration": "0ms",
+      "elapsed": 3000.0000000029795,
+      "frames": 616,
+      "max": 5.600000000002183,
+      "maxAnimations": 0,
+      "mode": "reduced",
+      "p95": 5.200000000000728
+    }
+  ],
+  "video": {
+    "result": "NOT RUN",
+    "reason": "Window-specific FFmpeg recording was unavailable; no desktop capture fallback used"
+  },
+  "frameLimit": "Short rAF diagnostics; not input latency, GPU or physical low-end acceptance.",
+  "feedback": "Mute and stop exercised; audibility not observed",
+  "scaling": "200% content zoom, not OS DPI"
+}

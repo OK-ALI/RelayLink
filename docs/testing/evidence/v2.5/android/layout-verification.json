@@ -1,0 +1,18 @@
+{
+  "result": "PASS",
+  "runtime": "actual Android API35 emulator",
+  "cases": [
+    {
+      "density": "480",
+      "privacyDeepLink": "PASS"
+    },
+    {
+      "density": "400",
+      "privacyDeepLink": "PASS"
+    }
+  ],
+  "landscape": "rotation 1 confirmed; access information scrolled into readable bounds",
+  "deepLinks": "relay-link://settings/privacy and /about exercised; identical About reopened after Back",
+  "back": "hardware Back returned to Home",
+  "limitations": "Density emulates phone layouts; physical hardware and spoken screen-reader behavior not verified"
+}

@@ -27,7 +27,7 @@ export function CommandCenter({ onNavigate }: { onNavigate: Navigate }) {
                 <Laptop size={25} />
                 <div>
                   <b>This PC</b>
-                  <span>Local workspace</span>
+                  <span>This device</span>
                 </div>
               </div>
               <div className="connection-rule">
@@ -58,7 +58,7 @@ export function CommandCenter({ onNavigate }: { onNavigate: Navigate }) {
                       <Smartphone size={18} />
                       <div>
                         <b>No paired devices</b>
-                        <p>Pairing is planned for Phase 1.</p>
+                        <p>Pairing is unavailable in this preview.</p>
                       </div>
                     </div>
                   </td>
@@ -69,7 +69,7 @@ export function CommandCenter({ onNavigate }: { onNavigate: Navigate }) {
               <button className="secondary" onClick={() => onNavigate('Devices')}>
                 Device overview <ArrowRight size={14} />
               </button>
-              <button className="secondary" disabled title="Pairing is not implemented in Phase 0">
+              <button className="secondary" disabled title="Pairing is unavailable in this preview">
                 Pair device <span>Unavailable</span>
               </button>
             </div>
@@ -77,25 +77,23 @@ export function CommandCenter({ onNavigate }: { onNavigate: Navigate }) {
           <section className="activity-section" aria-labelledby="activity-title">
             <div className="section-header">
               <h2 id="activity-title">PC activity</h2>
-              <span className="quiet-label">Monitoring not enabled</span>
+              <span className="quiet-label">Activity unavailable</span>
             </div>
             <dl className="activity-list">
               <div>
-                <dt>Foreground application</dt>
-                <dd>Not collected</dd>
+                <dt>Current app</dt>
+                <dd>Unavailable</dd>
               </div>
               <div>
-                <dt>Media session</dt>
-                <dd>Not collected</dd>
+                <dt>Media</dt>
+                <dd>Unavailable</dd>
               </div>
               <div>
                 <dt>Game profile</dt>
                 <dd>Not active</dd>
               </div>
             </dl>
-            <p className="section-note">
-              Activity-aware controls will appear here when their features are implemented.
-            </p>
+            <p className="section-note">Activity information is unavailable in this preview.</p>
           </section>
         </div>
         <aside className="workspace-side" aria-label="Access and local actions">
@@ -129,7 +127,7 @@ export function CommandCenter({ onNavigate }: { onNavigate: Navigate }) {
           </section>
           <section className="local-actions">
             <div className="section-header">
-              <h2>Workspace</h2>
+              <h2>Quick Access</h2>
             </div>
             <button onClick={() => onNavigate('Appearance')}>
               <Layers size={16} />
@@ -147,34 +145,31 @@ export function CommandCenter({ onNavigate }: { onNavigate: Navigate }) {
       <section className="surfaces-section" aria-labelledby="surfaces-title">
         <div className="section-header">
           <h2 id="surfaces-title">Control surfaces</h2>
-          <span className="quiet-label">Not implemented</span>
+          <span className="quiet-label">Unavailable in this preview</span>
         </div>
         <div className="surface-list">
           {[
             {
               name: 'PC Controls',
               detail: 'Pointer and keyboard',
-              phase: 'Phase 3',
               Icon: Monitor,
             },
             {
               name: 'Relay Decks',
               detail: 'Configurable action surfaces',
-              phase: 'Phase 7',
               Icon: Grid2X2,
             },
             {
               name: 'Relay Pad',
               detail: 'Game profiles and controllers',
-              phase: 'Phase 8',
               Icon: Gamepad2,
             },
-          ].map(({ name, detail, phase, Icon }) => (
+          ].map(({ name, detail, Icon }) => (
             <div className="surface-row" key={name}>
               <Icon size={19} />
               <b>{name}</b>
               <span>{detail}</span>
-              <span className="planned">Planned · {phase}</span>
+              <span className="planned">Unavailable</span>
             </div>
           ))}
         </div>

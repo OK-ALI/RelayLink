@@ -42,9 +42,44 @@ export const themes = {
 } as const;
 export type ThemeId = keyof typeof themes;
 export type Theme = (typeof themes)[ThemeId];
+/** Preview-only policy. Product connection events intentionally have no playback path. */
+export class FeedbackPreviewGate {
+  private last = -Infinity;
+  private generation = 0;
+  begin(origin: string, muted: boolean, volume: number, now: number) {
+    if (
+      origin !== 'demonstration' ||
+      muted ||
+      !Number.isFinite(volume) ||
+      volume <= 0 ||
+      volume > 1 ||
+      now - this.last < 1000
+    )
+      return null;
+    this.last = now;
+    return ++this.generation;
+  }
+  cancel() {
+    this.generation++;
+  }
+  current(token: number) {
+    return token === this.generation;
+  }
+}
+
 export const spacing = { xs: 4, sm: 8, md: 16, lg: 24, xl: 32, xxl: 48 } as const;
 export const radii = { control: 10, card: 18, panel: 24 } as const;
 export const motion = { quick: 120, panel: 180, reduced: 0 } as const;
+export type MotionMode = 'performance' | 'balanced' | 'enhanced';
+export function motionDuration(mode: MotionMode, reduced: boolean) {
+  return reduced || mode === 'performance' ? 0 : mode === 'balanced' ? 160 : 220;
+}
+export const typography = {
+  baseline: { label: 'A · Baseline', detail: 'Space Grotesk / Manrope' },
+  plex: { label: 'B · Precision', detail: 'IBM Plex Sans' },
+  editorial: { label: 'C · Editorial', detail: 'Fraunces / Source Sans 3' },
+} as const;
+export type TypographyId = keyof typeof typography;
 export const identity = {
   name: 'Relay Link',
   service: 'relay-link',
@@ -58,19 +93,25 @@ export const settings = [
   {
     id: 'appearance',
     title: 'Appearance',
-    description: 'Explore the four candidate themes.',
+    description: 'Theme and visual preferences for this application.',
     keywords: 'theme color contrast',
   },
   {
     id: 'motion',
-    title: 'Motion',
-    description: 'Reduce transitions and visual movement.',
+    title: 'Motion and accessibility',
+    description: 'Purposeful transitions. System Reduced Motion always takes priority.',
     keywords: 'accessibility animation performance',
+  },
+  {
+    id: 'feedback',
+    title: 'Sound and haptics',
+    description: 'Demonstration previews only. No connection has occurred.',
+    keywords: 'sound audio volume haptic vibration chime demonstration',
   },
   {
     id: 'privacy',
     title: 'Privacy and access',
-    description: 'PC control remains disabled in this foundation.',
+    description: 'PC control is unavailable in this preview.',
     keywords: 'security permissions input',
   },
   {

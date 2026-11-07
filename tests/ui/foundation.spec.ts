@@ -1,120 +1,215 @@
-import { test, expect } from '@playwright/test';
-import { readFile } from 'node:fs/promises';
+import { test, expect, type Page } from '@playwright/test';
 
-test('desktop navigation, candidacy, settings and theme remain usable without control', async ({
+async function jump(page: Page, name: string, mobile = false) {
+  await page.getByRole('button', { name: 'Jump to Section', exact: true }).click();
+  await page.getByRole('button', { name, exact: true }).last().click();
+  if (!mobile) await expect(page.getByRole('heading', { name, exact: true })).toBeVisible();
+}
+
+test('audio preview failure remains local and does not affect navigation or access state', async ({
+  page,
+}) => {
+  await page.route('**/*.wav', (route) => route.abort('failed'));
+  await page.goto('/#settings/feedback');
+  await page.getByRole('switch', { name: 'Mute demonstration sounds' }).uncheck();
+  await page.getByRole('button', { name: 'Demonstrate chime A' }).click();
+  await expect(page.getByRole('status', { name: 'Feedback preview status' })).toHaveText(
+    'Audio preview unavailable',
+  );
+  await page
+    .getByRole('navigation', { name: 'Main navigation' })
+    .getByRole('button', { name: 'Command Center', exact: true })
+    .click();
+  await expect(page.getByText('Remote access is off', { exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Pair device Unavailable' })).toBeDisabled();
+});
+
+test('Desktop navigation, Jump discovery, themes and disabled control regressions', async ({
   page,
 }) => {
   const errors: string[] = [];
-  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/');
   await expect(page.getByRole('heading', { name: 'Command Center', exact: true })).toBeVisible();
-  await expect(page.getByText('Remote access is off')).toBeVisible();
+  await expect(page.getByText('Remote access is off', { exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Quick Access', exact: true })).toBeVisible();
+  expect(await page.locator('body').innerText()).not.toMatch(
+    /workspace|phase \d|\b4%|not implemented|development/i,
+  );
   await expect(page.getByTestId('boundary-status')).toHaveText('Design preview');
   await page.getByRole('button', { name: 'Devices', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Paired devices' })).toBeVisible();
   await page.getByRole('button', { name: 'Settings', exact: true }).click();
+  await page.getByRole('button', { name: 'Jump to Section', exact: true }).click();
   await page.getByLabel('Search settings').fill('privacy');
-  await expect(page.getByRole('heading', { name: 'Privacy and access' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Appearance', exact: true })).not.toBeVisible();
-  await page.getByLabel('Search settings').fill('');
-  await page.getByRole('button', { name: 'Arctic Light' }).click();
-  await expect(page.locator('.shell')).toHaveAttribute('data-theme', 'light');
-  await page.getByLabel('Reduce motion').check();
+  await page
+    .getByRole('dialog')
+    .getByRole('button', { name: 'Privacy and access', exact: true })
+    .click();
+  await expect(page.getByText('No devices have permission to control this PC.')).toBeVisible();
+  await jump(page, 'Appearance');
+  for (const [label, id] of [
+    ['Arctic Light', 'light'],
+    ['Midnight Blue', 'blue'],
+    ['Carbon Teal', 'teal'],
+    ['Obsidian Amber', 'amber'],
+  ]) {
+    await page.getByRole('button', { name: label }).click();
+    await expect(page.locator('.shell')).toHaveAttribute('data-theme', id!);
+  }
+  await jump(page, 'Motion and accessibility');
+  await page.getByRole('switch', { name: 'Reduce motion' }).check();
   await expect(page.locator('.shell')).toHaveClass(/reduced/);
+  await page.getByRole('button', { name: 'Jump to Section', exact: true }).click();
   await page.getByLabel('Search settings').fill('no-such-setting');
   await expect(page.getByRole('status')).toHaveText(/No settings found/);
-  await page.screenshot({ path: 'artifacts-local/desktop-light.png', fullPage: true });
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('button', { name: 'Jump to Section', exact: true })).toBeFocused();
   expect(errors).toEqual([]);
 });
 
-test('compact desktop and candidate dashboard remain in bounds', async ({ page }) => {
-  await page.setViewportSize({ width: 800, height: 900 });
-  await page.goto('/');
-  await expect(page.getByRole('heading', { name: 'Device connections' })).toBeVisible();
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
-    true,
-  );
-  await page.screenshot({ path: 'artifacts-local/desktop-amber.png', fullPage: true });
-});
-
-test('mobile web shell navigation/search/theme and no-control state', async ({ page }) => {
-  const errors: string[] = [];
-  page.on('pageerror', (error) => errors.push(error.message));
-  await page.setViewportSize({ width: 393, height: 852 });
-  await page.goto('http://127.0.0.1:8082');
-  await expect(page.getByText('Remote access is off')).toBeVisible();
-  await page.getByRole('button', { name: 'Settings', exact: true }).click();
-  await page.getByLabel('Search settings').fill('privacy');
-  await expect(page.getByText('No control capabilities are granted.')).toBeVisible();
-  await page.getByLabel('Search settings').fill('');
-  await page.getByRole('button', { name: 'Carbon Teal' }).click();
-  await page.getByRole('switch', { name: 'Reduce motion' }).check();
-  expect(
-    (await page.getByRole('switch', { name: 'Reduce motion' }).boundingBox())?.height,
-  ).toBeGreaterThanOrEqual(44);
-  await page.screenshot({ path: 'artifacts-local/mobile-teal.png', fullPage: true });
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
-    true,
-  );
-  expect(errors).toEqual([]);
-});
-
-test('capture concrete desktop, mobile and letter-free mark comparisons for owner review', async ({
+test('Desktop font previews load, survive navigation, race safely and reset on reload', async ({
   page,
 }) => {
   await page.goto('/');
-  await expect(page.getByText('Remote access is off')).toBeVisible();
-  await page.screenshot({ path: 'artifacts-local/review-desktop.png', fullPage: true });
-  await page.setViewportSize({ width: 393, height: 852 });
-  await page.goto('http://127.0.0.1:8082');
-  await expect(page.getByText('Remote access is off')).toBeVisible();
-  await page.screenshot({ path: 'artifacts-local/review-mobile.png', fullPage: true });
-  const names = ['linked-path', 'relay-loop', 'directional-bridge'];
-  const marks = await Promise.all(
-    names.map((name) => readFile(`branding/source/${name}-candidate.svg`, 'utf8')),
-  );
-  await page.setViewportSize({ width: 1200, height: 650 });
-  await page.setContent(
-    `<html><body style="margin:0;background:#101419;color:#f5f1e8;font-family:system-ui;padding:44px"><p style="color:#f0a34a;letter-spacing:3px;font-size:11px">RELAY LINK · PHASE 0 DESIGN REVIEW</p><h1 style="font-size:32px">Three link-only directions.</h1><p style="color:#b9c3ce">Original comparison studies. A � Linked Path is the owner-selected concept direction; production artwork remains pending.</p><div style="display:flex;gap:24px;margin-top:36px">${marks.map((mark, i) => `<section style="flex:1;background:#1b232d;padding:28px;border-radius:18px"><div style="width:100px;height:100px;margin-bottom:28px">${mark}</div><h2 style="font-size:18px">${['A · Linked Path', 'B · Relay Loop', 'C · Directional Bridge'][i]}</h2><div style="display:flex;gap:20px;align-items:center">${[16, 24, 32].map((size) => `<span style="display:inline-block;width:${size}px;height:${size}px">${mark}</span>`).join('')}</div><p style="font-size:11px;color:#b9c3ce">16 px · 24 px · 32 px</p></section>`).join('')}</div></body></html>`,
-  );
-  await page.screenshot({ path: 'artifacts-local/review-symbols.png', fullPage: true });
+  await page
+    .getByRole('navigation', { name: 'Main navigation' })
+    .getByRole('button', { name: 'Appearance', exact: true })
+    .click();
+  for (const [name, id] of [
+    ['B · Precision', 'plex'],
+    ['C · Editorial', 'editorial'],
+    ['A · Baseline', 'baseline'],
+  ]) {
+    await page.getByRole('button', { name: new RegExp(name!) }).click();
+    await expect(page.getByTestId('font-status')).toContainText('ready');
+    await expect(page.locator('.shell')).toHaveAttribute('data-typography', id!);
+    await page.getByRole('button', { name: 'Command Center', exact: true }).click();
+    await expect(page.locator('.shell')).toHaveAttribute('data-typography', id!);
+    await page
+      .getByRole('navigation', { name: 'Main navigation' })
+      .getByRole('button', { name: 'Appearance', exact: true })
+      .click();
+  }
+  await page.getByRole('button', { name: /B · Precision/ }).click();
+  await page.getByRole('button', { name: /C · Editorial/ }).click();
+  await expect(page.locator('.shell')).toHaveAttribute('data-typography', 'editorial');
+  await page.reload();
+  await expect(page.locator('.shell')).toHaveAttribute('data-typography', 'baseline');
 });
 
-for (const width of [1280, 1920]) {
-  test(`Desktop composition at ${width} pixels`, async ({ page }) => {
-    await page.setViewportSize({ width, height: width === 1280 ? 800 : 1080 });
+test('Desktop direct anchor, keyboard focus, OS reduction and feedback cancellation', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/#settings/privacy');
+  await expect(page.getByRole('heading', { name: 'Privacy and access' })).toBeVisible();
+  await expect(page.locator('.shell')).toHaveClass(/reduced/);
+  await jump(page, 'Sound and haptics');
+  await page.getByRole('button', { name: 'Demonstrate chime A' }).click();
+  await expect(page.getByRole('status', { name: 'Feedback preview status' })).toHaveText(
+    'Preview muted',
+  );
+  await page.getByRole('switch', { name: 'Mute demonstration sounds' }).uncheck();
+  await page.getByRole('button', { name: 'Demonstrate chime A' }).click();
+  await expect(page.getByRole('status', { name: 'Feedback preview status' })).toHaveText(
+    /demonstration|Demonstration/,
+  );
+  await page.getByRole('button', { name: 'Stop preview' }).click();
+  await expect(page.getByRole('status', { name: 'Feedback preview status' })).toHaveText(
+    'Demonstration stopped',
+  );
+  await page.getByRole('slider', { name: 'Preview volume' }).fill('0');
+  await page.getByRole('button', { name: 'Demonstrate chime B' }).click();
+  await expect(page.getByRole('status', { name: 'Feedback preview status' })).toHaveText(
+    'Preview muted',
+  );
+  await jump(page, 'About Relay Link');
+  await page.getByRole('button', { name: 'Open component study' }).click();
+  await expect(page.getByRole('dialog', { name: 'Component study' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Unavailable', exact: true })).toBeDisabled();
+  await page.getByRole('slider', { name: 'Study precision slider' }).focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('slider', { name: 'Study precision slider' })).toHaveValue('41');
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('button', { name: 'Open component study' })).toBeFocused();
+});
+
+for (const [width, height] of [
+  [800, 900],
+  [1280, 800],
+  [1920, 1080],
+])
+  test(`Desktop ${width}: all four themes and responsive composition`, async ({ page }) => {
+    await page.setViewportSize({ width: width!, height: height! });
     await page.goto('/');
     await expect(page.getByRole('heading', { name: 'Device connections' })).toBeVisible();
-    await expect(page.getByText('Remote access is off', { exact: true })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Pair device Unavailable' })).toBeDisabled();
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
-      true,
-    );
-    await page.screenshot({ path: `artifacts-local/desktop-${width}.png`, fullPage: true });
     await page.getByRole('button', { name: 'Review access' }).click();
     await expect(page.getByRole('heading', { name: 'Privacy and access' })).toBeVisible();
-    await page.getByLabel('Search settings').focus();
-    await page.keyboard.press('Tab');
-    await expect(page.getByLabel('Search settings')).not.toBeFocused();
+    await jump(page, 'Appearance');
+    for (const label of ['Obsidian Amber', 'Midnight Blue', 'Carbon Teal', 'Arctic Light']) {
+      await page.getByRole('button', { name: label }).click();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+      await page.screenshot({
+        path: `artifacts-local/v2.5/browser-desktop-${width}-${label.replaceAll(' ', '-')}.png`,
+        fullPage: true,
+      });
+    }
   });
-}
+
 for (const [width, height] of [
   [360, 800],
   [430, 932],
-]) {
-  test(`Mobile composition at ${width} pixels`, async ({ page }) => {
-    await page.setViewportSize({ width, height });
-    await page.goto('http://127.0.0.1:8082');
+  [800, 360],
+])
+  test(`Mobile ${width}: Jump, themes, touch targets and motion`, async ({ page }) => {
+    const errors: string[] = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    await page.setViewportSize({ width: width!, height: height! });
+    await page.goto('http://127.0.0.1:8082/?section=about');
+    await expect(
+      page.getByText('0.1 · Foundation · Phase 0 complete · 4%', { exact: true }),
+    ).toBeVisible();
+    await page.getByRole('button', { name: 'Home', exact: true }).click();
+    await expect(page).not.toHaveURL(/section=/);
     await expect(page.getByText('Remote access is off')).toBeVisible();
-    await expect(page.getByText('No PC selected. Pairing is planned for Phase 1.')).toBeVisible();
+    expect(await page.locator('body').innerText()).not.toMatch(
+      /workspace|phase \d|\b4%|not implemented|development/i,
+    );
+    await page.getByRole('button', { name: 'Settings', exact: true }).click();
+    const trigger = page.getByRole('button', { name: 'Jump to Section', exact: true });
+    expect((await trigger.boundingBox())!.height).toBeGreaterThanOrEqual(48);
+    await jump(page, 'Privacy and access', true);
+    await expect(page.getByText('No devices have permission to control this PC.')).toBeVisible();
+    await jump(page, 'Appearance', true);
+    for (const label of ['Obsidian Amber', 'Midnight Blue', 'Carbon Teal', 'Arctic Light'])
+      await page.getByRole('button', { name: label, exact: true }).click();
+    await jump(page, 'Motion and accessibility', true);
+    await page.getByRole('switch', { name: 'Reduce motion' }).check();
+    expect(
+      (await page.getByRole('switch', { name: 'Reduce motion' }).boundingBox())!.height,
+    ).toBeGreaterThanOrEqual(44);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
-    await page.screenshot({ path: `artifacts-local/mobile-${width}.png`, fullPage: true });
-    const nav = page.getByRole('button', { name: 'Settings', exact: true });
-    expect((await nav.boundingBox())?.height).toBeGreaterThanOrEqual(44);
-    await nav.click();
-    await page.getByLabel('Search settings').fill('privacy');
-    await expect(page.getByText('No control capabilities are granted.')).toBeVisible();
+    await jump(page, 'Sound and haptics', true);
+    const volume = page.getByRole('slider', { name: 'Preview volume', exact: true });
+    expect((await volume.boundingBox())!.height).toBeGreaterThanOrEqual(48);
+    await volume.focus();
+    await page.keyboard.press('ArrowRight');
+    await expect(volume).toHaveValue('26');
+    await volume.fill('100');
+    await page.keyboard.press('ArrowRight');
+    await expect(volume).toHaveValue('100');
+    await volume.fill('0');
+    await page.getByRole('button', { name: 'Demonstrate chime A' }).click();
+    await expect(page.getByText('Preview muted', { exact: true })).toBeVisible();
+    await page.screenshot({
+      path: `artifacts-local/v2.5/browser-mobile-${width}.png`,
+      fullPage: true,
+    });
+    expect(errors).toEqual([]);
   });
-}

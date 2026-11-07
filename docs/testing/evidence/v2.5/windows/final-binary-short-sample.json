@@ -1,0 +1,101 @@
+﻿{
+  "Scope": "Available Windows host; release build; open idle window; app/WebView descendants only; not tray, low-end, active-control or physical-device acceptance",
+  "BinarySha256": "bb709371244f249efd7a171d4cc758d6c6e8f2230aa0a7dc3356a27df865ab38",
+  "WarmupSeconds": 20,
+  "DurationSeconds": 62.630874299999995,
+  "SampleCount": 12,
+  "LogicalProcessors": 16,
+  "TotalSystemCpuPercent": 0,
+  "AveragePrivateMiB": 218.32552083333334,
+  "PeakPrivateMiB": 219.828125,
+  "AverageWorkingSetMiB": 408.248046875,
+  "PeakWorkingSetMiB": 411.0625,
+  "FinalProcessCount": 7,
+  "Limitations": "CPU of children that exit during the interval can be undercounted; working-set sums can double-count shared pages. GPU, startup, network, battery and low-end compatibility not measured.",
+  "Samples": [
+    {
+      "ElapsedSeconds": 5.388541,
+      "CpuSeconds": 0,
+      "WorkingSetMiB": 397.21875,
+      "PrivateMiB": 218.07421875,
+      "ProcessCount": 7
+    },
+    {
+      "ElapsedSeconds": 10.6539285,
+      "CpuSeconds": 0,
+      "WorkingSetMiB": 408.51171875,
+      "PrivateMiB": 219.828125,
+      "ProcessCount": 7
+    },
+    {
+      "ElapsedSeconds": 15.8515529,
+      "CpuSeconds": 0,
+      "WorkingSetMiB": 408.23828125,
+      "PrivateMiB": 219.41015625,
+      "ProcessCount": 7
+    },
+    {
+      "ElapsedSeconds": 21.0601229,
+      "CpuSeconds": 0,
+      "WorkingSetMiB": 408.26171875,
+      "PrivateMiB": 219.41796875,
+      "ProcessCount": 7
+    },
+    {
+      "ElapsedSeconds": 26.265622,
+      "CpuSeconds": 0,
+      "WorkingSetMiB": 408.26171875,
+      "PrivateMiB": 219.41796875,
+      "ProcessCount": 7
+    },
+    {
+      "ElapsedSeconds": 31.4558638,
+      "CpuSeconds": 0,
+      "WorkingSetMiB": 408.26171875,
+      "PrivateMiB": 219.41796875,
+      "ProcessCount": 7
+    },
+    {
+      "ElapsedSeconds": 36.6677748,
+      "CpuSeconds": 0,
+      "WorkingSetMiB": 408.26171875,
+      "PrivateMiB": 219.41796875,
+      "ProcessCount": 7
+    },
+    {
+      "ElapsedSeconds": 41.8673663,
+      "CpuSeconds": 0,
+      "WorkingSetMiB": 411.0625,
+      "PrivateMiB": 217.8359375,
+      "ProcessCount": 7
+    },
+    {
+      "ElapsedSeconds": 47.062692,
+      "CpuSeconds": 0,
+      "WorkingSetMiB": 410.3203125,
+      "PrivateMiB": 216.85546875,
+      "ProcessCount": 7
+    },
+    {
+      "ElapsedSeconds": 52.2459315,
+      "CpuSeconds": 0,
+      "WorkingSetMiB": 410.203125,
+      "PrivateMiB": 216.74609375,
+      "ProcessCount": 7
+    },
+    {
+      "ElapsedSeconds": 57.4382374,
+      "CpuSeconds": 0,
+      "WorkingSetMiB": 410.1875,
+      "PrivateMiB": 216.7421875,
+      "ProcessCount": 7
+    },
+    {
+      "ElapsedSeconds": 62.630874299999995,
+      "CpuSeconds": 0,
+      "WorkingSetMiB": 410.1875,
+      "PrivateMiB": 216.7421875,
+      "ProcessCount": 7
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "result": "PASS",
+  "before": 56,
+  "after": 128,
+  "errors": "",
+  "scope": "Actual API35 font-scale lifecycle probe"
+}

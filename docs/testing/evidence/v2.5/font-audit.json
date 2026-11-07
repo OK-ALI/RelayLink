@@ -1,0 +1,119 @@
+{
+  "baseline": {
+    "nativeLoadedAssetBytes": 184616,
+    "fonts": [
+      {
+        "family": "manrope",
+        "file": "400Regular/Manrope_400Regular.ttf",
+        "bytes": 98004,
+        "sha256": "b5e3105945aac85a820133ec66b516a4514e6fb242b31f2696b15adf43683d46",
+        "glyphCount": 678,
+        "missingCharacters": {
+          "latin": "",
+          "greek": "",
+          "cyrillic": "",
+          "arabic": "العربية",
+          "devanagari": "हिन्दी",
+          "cjk": "中文日本語",
+          "symbols": "✓⌄↗"
+        },
+        "licenseFiles": ["LICENSE", "LICENSE_FONT"]
+      },
+      {
+        "family": "space-grotesk",
+        "file": "500Medium/SpaceGrotesk_500Medium.ttf",
+        "bytes": 86612,
+        "sha256": "d8135bce6603398f3d0cdb478a018d7fa869b0168d037a9408cad23e030bfa7a",
+        "glyphCount": 735,
+        "missingCharacters": {
+          "latin": "",
+          "greek": "Εληνικά",
+          "cyrillic": "Руский",
+          "arabic": "العربية",
+          "devanagari": "हिन्दी",
+          "cjk": "中文日本語",
+          "symbols": "✓⌄"
+        },
+        "licenseFiles": ["LICENSE", "LICENSE_FONT"]
+      }
+    ]
+  },
+  "plex": {
+    "nativeLoadedAssetBytes": 436484,
+    "fonts": [
+      {
+        "family": "ibm-plex-sans",
+        "file": "400Regular/IBMPlexSans_400Regular.ttf",
+        "bytes": 218236,
+        "sha256": "8685116dfbcfa639621631c4af0ad62e52ddeb9979acbec0007ccef2e4801a27",
+        "glyphCount": 891,
+        "missingCharacters": {
+          "latin": "",
+          "greek": "",
+          "cyrillic": "",
+          "arabic": "العربية",
+          "devanagari": "हिन्दी",
+          "cjk": "中文日本語",
+          "symbols": "⌄"
+        },
+        "licenseFiles": ["LICENSE", "LICENSE_FONT"]
+      },
+      {
+        "family": "ibm-plex-sans",
+        "file": "600SemiBold/IBMPlexSans_600SemiBold.ttf",
+        "bytes": 218248,
+        "sha256": "659f916ce1922bd4fecac7cd5f26018817a2946327a5dd00169c8bab14ae2c58",
+        "glyphCount": 891,
+        "missingCharacters": {
+          "latin": "",
+          "greek": "",
+          "cyrillic": "",
+          "arabic": "العربية",
+          "devanagari": "हिन्दी",
+          "cjk": "中文日本語",
+          "symbols": "⌄"
+        },
+        "licenseFiles": ["LICENSE", "LICENSE_FONT"]
+      }
+    ]
+  },
+  "editorial": {
+    "nativeLoadedAssetBytes": 453524,
+    "fonts": [
+      {
+        "family": "source-sans-3",
+        "file": "400Regular/SourceSans3_400Regular.ttf",
+        "bytes": 381020,
+        "sha256": "7ca2b9c4677ce81daf8a7feafb1680f5d228065698b500c5a24e22831e2ae849",
+        "glyphCount": 1615,
+        "missingCharacters": {
+          "latin": "",
+          "greek": "",
+          "cyrillic": "",
+          "arabic": "العربية",
+          "devanagari": "हिन्दी",
+          "cjk": "中文日本語",
+          "symbols": "⌄"
+        },
+        "licenseFiles": ["LICENSE", "LICENSE_FONT"]
+      },
+      {
+        "family": "fraunces",
+        "file": "600SemiBold/Fraunces_600SemiBold.ttf",
+        "bytes": 72504,
+        "sha256": "9f03c0fe70d1670d22f392a138ac02eceedc5eee5f1cd8d7486ba2aed843b8aa",
+        "glyphCount": 624,
+        "missingCharacters": {
+          "latin": "",
+          "greek": "Εληνικά",
+          "cyrillic": "Руский",
+          "arabic": "العربية",
+          "devanagari": "हिन्दी",
+          "cjk": "中文日本語",
+          "symbols": "✓⌄→↗"
+        },
+        "licenseFiles": ["LICENSE", "LICENSE_FONT"]
+      }
+    ]
+  }
+}

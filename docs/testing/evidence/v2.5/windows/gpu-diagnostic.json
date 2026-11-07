@@ -1,0 +1,7 @@
+{
+  "Result": "OBSERVED",
+  "Count": 50,
+  "Mean": 0.0,
+  "Scope": "Five-second idle app-descendant per-engine GPU counter diagnostic; invalid global samples excluded; not a GPU benchmark",
+  "Peak": 0.0
+}

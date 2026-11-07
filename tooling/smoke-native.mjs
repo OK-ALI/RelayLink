@@ -60,6 +60,10 @@ try {
   );
   await delay(250);
   assert.match(await execute('return document.querySelector("h1").textContent'), /Settings/);
+  if (process.argv.includes('--refinement')) {
+    const { runRefinement } = await import('./verify-native-design.mjs');
+    await runRefinement({ request, execute, id });
+  }
   const screenshot = await request(`/session/${id}/screenshot`);
   await mkdir('artifacts-local', { recursive: true });
   await writeFile('artifacts-local/native-desktop.png', Buffer.from(screenshot, 'base64'));

@@ -1,4 +1,4 @@
-name: Phase 0 foundation
+name: Foundation verification
 on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
@@ -69,6 +69,7 @@ jobs:
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
+      - run: node tooling/verify-android-manifest.mjs
       - name: Start development bundler
         run: |
           mkdir -p artifacts-local
@@ -83,6 +84,7 @@ jobs:
           script: |
             adb install apps/mobile/android/app/build/outputs/apk/debug/app-debug.apk
             node tooling/smoke-android.mjs
+            node tooling/verify-android-layouts.mjs
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
         if: always()
         with:
@@ -90,3 +92,4 @@ jobs:
           path: |
             apps/mobile/android/app/build/outputs/apk/debug/*.apk
             artifacts-local/
+            docs/testing/evidence/v2.5/android/
