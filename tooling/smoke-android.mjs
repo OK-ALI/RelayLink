@@ -3,18 +3,10 @@ import { execFileSync } from 'node:child_process';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { setTimeout as delay } from 'node:timers/promises';
 import { performance } from 'node:perf_hooks';
-import { visibleTarget } from './android-ui.mjs';
+import { freshSnapshot, visibleTarget } from './android-ui.mjs';
 
 const adb = (...args) => execFileSync('adb', args, { encoding: 'utf8', timeout: 20000 });
-const dump = () => {
-  const result = adb('shell', 'uiautomator', 'dump', '/sdcard/relay-link-ui.xml');
-  assert.match(
-    result,
-    /dumped to:/,
-    'UIAutomator did not produce a fresh snapshot; never read stale evidence',
-  );
-  return adb('exec-out', 'cat', '/sdcard/relay-link-ui.xml');
-};
+const dump = () => freshSnapshot(adb, '/sdcard/relay-link-ui.xml');
 function tap(xml, label) {
   const target = visibleTarget(xml, label);
   assert(target, `Visible native Android node not found: ${label}`);

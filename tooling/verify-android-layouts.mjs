@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { setTimeout as delay } from 'node:timers/promises';
+import { freshSnapshot } from './android-ui.mjs';
 
 const adb = (...args) =>
   execFileSync('adb', args, { encoding: 'utf8', timeout: 20000, maxBuffer: 16 * 1024 * 1024 });
@@ -11,11 +12,7 @@ await mkdir(dir, { recursive: true });
 const density = adb('shell', 'wm', 'density').match(/Override density:\s*(\d+)/)?.[1] ?? 'reset';
 const rotation = adb('shell', 'settings', 'get', 'system', 'user_rotation').trim();
 const autoRotate = adb('shell', 'settings', 'get', 'system', 'accelerometer_rotation').trim();
-const dump = () => {
-  const output = adb('shell', 'uiautomator', 'dump', '/sdcard/relay-link-layout.xml');
-  assert.match(output, /dumped to:/);
-  return adb('exec-out', 'cat', '/sdcard/relay-link-layout.xml');
-};
+const dump = () => freshSnapshot(adb, '/sdcard/relay-link-layout.xml');
 const open = async (section) => {
   adb(
     'shell',

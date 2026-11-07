@@ -4,6 +4,8 @@ async function jump(page: Page, name: string, mobile = false) {
   await page.getByRole('button', { name: 'Jump to Section', exact: true }).click();
   await page.getByRole('button', { name, exact: true }).last().click();
   if (!mobile) await expect(page.getByRole('heading', { name, exact: true })).toBeVisible();
+  else
+    await expect(page.getByRole('button', { name: 'Jump to Section', exact: true })).toBeFocused();
 }
 
 test('audio preview failure remains local and does not affect navigation or access state', async ({
@@ -199,10 +201,10 @@ for (const [width, height] of [
     const volume = page.getByRole('slider', { name: 'Preview volume', exact: true });
     expect((await volume.boundingBox())!.height).toBeGreaterThanOrEqual(48);
     await volume.focus();
-    await page.keyboard.press('ArrowRight');
+    await volume.press('ArrowRight');
     await expect(volume).toHaveValue('26');
     await volume.fill('100');
-    await page.keyboard.press('ArrowRight');
+    await volume.press('ArrowRight');
     await expect(volume).toHaveValue('100');
     await volume.fill('0');
     await page.getByRole('button', { name: 'Demonstrate chime A' }).click();

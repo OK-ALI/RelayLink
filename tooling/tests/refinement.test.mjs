@@ -3,7 +3,31 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { FeedbackPreviewGate, motionDuration } from '../../packages/design-tokens/src/index.ts';
-import { visibleTarget } from '../android-ui.mjs';
+import { freshSnapshot, visibleTarget } from '../android-ui.mjs';
+
+test('transient Android null roots retry fresh dumps without reading stale XML', () => {
+  let dumps = 0;
+  let reads = 0;
+  const adb = (...args) => {
+    if (args[0] === 'shell') return ++dumps < 3 ? '' : 'UI hierarchy dumped to: /test.xml';
+    reads++;
+    return '<hierarchy rotation="0"></hierarchy>';
+  };
+  assert.match(freshSnapshot(adb, '/test.xml'), /hierarchy/);
+  assert.equal(dumps, 3);
+  assert.equal(reads, 1);
+  let calls = 0;
+  assert.throws(
+    () =>
+      freshSnapshot(() => {
+        calls++;
+        return '';
+      }, '/test.xml'),
+    /no stale file read/,
+  );
+  assert.equal(calls, 3);
+  assert.throws(() => freshSnapshot(() => 'Permission denied', '/test.xml'), /Permission denied/);
+});
 
 test('native automation rejects clipped controls and chooses the foreground modal target', () => {
   const node = (bounds, extra = '') =>

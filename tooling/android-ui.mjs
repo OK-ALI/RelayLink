@@ -1,4 +1,21 @@
 /** UIAutomator may include clipped nodes and a background window under a modal. */
+export function freshSnapshot(adb, path) {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const output = adb('shell', 'uiautomator', 'dump', path);
+    if (/dumped to:/.test(output)) {
+      const xml = adb('exec-out', 'cat', path);
+      if (!xml.includes('<hierarchy'))
+        throw new Error('UIAutomator wrote an invalid fresh snapshot');
+      return xml;
+    }
+    if (output.trim() && !/null root/i.test(output))
+      throw new Error('UIAutomator did not produce a fresh snapshot: ' + output.trim());
+  }
+  throw new Error(
+    'UIAutomator did not produce a fresh snapshot after three attempts; no stale file read',
+  );
+}
+
 export function visibleTarget(xml, label) {
   const candidates = [];
   const ancestors = [];
