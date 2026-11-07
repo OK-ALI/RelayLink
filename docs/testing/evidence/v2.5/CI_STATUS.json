@@ -1,0 +1,130 @@
+{
+  "result": "PASS",
+  "scope": "Clean-runner verification for the identified source commit. Windows CI builds/tests/Clippy; actual Windows GUI smoke is separate local evidence. Android CI runs the actual emulator suite. No physical or release-performance acceptance.",
+  "final": {
+    "runId": "42378880178",
+    "headSha": "8b76fef6943b4e966b0feaf037184d9a8260f70b",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/OK-ALI/RelayLink/actions/runs/42378880178",
+    "createdAt": "2026-11-07T13:51:39Z",
+    "updatedAt": "2026-11-07T14:10:28Z",
+    "jobs": [
+      {
+        "databaseId": 128422114213,
+        "name": "android-development-build",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-07T13:51:49Z",
+        "completedAt": "2026-11-07T14:10:27Z",
+        "url": "https://github.com/OK-ALI/RelayLink/actions/runs/42378880178/job/128422114213"
+      },
+      {
+        "databaseId": 128422114389,
+        "name": "windows-native",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-07T13:51:49Z",
+        "completedAt": "2026-11-07T13:57:53Z",
+        "url": "https://github.com/OK-ALI/RelayLink/actions/runs/42378880178/job/128422114389"
+      },
+      {
+        "databaseId": 128422114398,
+        "name": "contracts-and-ui",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-07T13:51:49Z",
+        "completedAt": "2026-11-07T13:54:06Z",
+        "url": "https://github.com/OK-ALI/RelayLink/actions/runs/42378880178/job/128422114398"
+      }
+    ]
+  },
+  "earlierAttempts": [
+    {
+      "runId": "42375985634",
+      "headSha": "336ae194b06f59075e8026648754d312bf9d66f3",
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/OK-ALI/RelayLink/actions/runs/42375985634",
+      "createdAt": "2026-11-07T13:13:36Z",
+      "updatedAt": "2026-11-07T13:27:20Z",
+      "jobs": [
+        {
+          "databaseId": 128413538290,
+          "name": "windows-native",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-07T13:13:39Z",
+          "completedAt": "2026-11-07T13:20:01Z",
+          "url": "https://github.com/OK-ALI/RelayLink/actions/runs/42375985634/job/128413538290"
+        },
+        {
+          "databaseId": 128413538446,
+          "name": "android-development-build",
+          "status": "completed",
+          "conclusion": "failure",
+          "startedAt": "2026-11-07T13:13:39Z",
+          "completedAt": "2026-11-07T13:27:20Z",
+          "url": "https://github.com/OK-ALI/RelayLink/actions/runs/42375985634/job/128413538446"
+        },
+        {
+          "databaseId": 128413538584,
+          "name": "contracts-and-ui",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-07T13:13:38Z",
+          "completedAt": "2026-11-07T13:15:35Z",
+          "url": "https://github.com/OK-ALI/RelayLink/actions/runs/42375985634/job/128413538584"
+        }
+      ]
+    },
+    {
+      "runId": "42377714340",
+      "headSha": "749c7356eca611757cf711340c17b20a0215e874",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "url": "https://github.com/OK-ALI/RelayLink/actions/runs/42377714340",
+      "createdAt": "2026-11-07T13:36:06Z",
+      "updatedAt": "2026-11-07T13:51:48Z",
+      "jobs": [
+        {
+          "databaseId": 128418622270,
+          "name": "android-development-build",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "startedAt": "2026-11-07T13:36:09Z",
+          "completedAt": "2026-11-07T13:51:47Z",
+          "url": "https://github.com/OK-ALI/RelayLink/actions/runs/42377714340/job/128418622270"
+        },
+        {
+          "databaseId": 128418622423,
+          "name": "windows-native",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-07T13:36:09Z",
+          "completedAt": "2026-11-07T13:42:12Z",
+          "url": "https://github.com/OK-ALI/RelayLink/actions/runs/42377714340/job/128418622423"
+        },
+        {
+          "databaseId": 128418622475,
+          "name": "contracts-and-ui",
+          "status": "completed",
+          "conclusion": "failure",
+          "startedAt": "2026-11-07T13:36:09Z",
+          "completedAt": "2026-11-07T13:37:31Z",
+          "url": "https://github.com/OK-ALI/RelayLink/actions/runs/42377714340/job/128418622475"
+        }
+      ]
+    }
+  ],
+  "corrections": [
+    "First-install Expo menu leaf labels resolved to real clickable containing targets; bounded state-based dismissal.",
+    "Browser Jump focus restoration awaited before real slider key input; 33 local Chromium repeats passed.",
+    "Transient null UI roots retried with up to three new dumps; old XML is never read without a fresh success marker."
+  ],
+  "observedAndroidPassMessages": [
+    "actual merged APK manifest excludes recording and background audio services/permissions.",
+    "actual Android Jump, themes, typography and motion/feedback demonstrations verified. Physical sensation is not claimed.",
+    "native Android density, landscape, local deep links and hardware Back."
+  ]
+}

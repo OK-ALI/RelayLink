@@ -5,32 +5,32 @@
     {
       "theme": "amber",
       "font": "baseline",
-      "status": "A · Baseline ready · 60 ms load · session only"
+      "status": "A · Baseline ready · 47 ms load · session only"
     },
     {
       "theme": "amber",
       "font": "plex",
-      "status": "B · Precision ready · 75 ms load · session only"
+      "status": "B · Precision ready · 55 ms load · session only"
     },
     {
       "theme": "amber",
       "font": "editorial",
-      "status": "C · Editorial ready · 77 ms load · session only"
+      "status": "C · Editorial ready · 133 ms load · session only"
     },
     {
       "theme": "light",
       "font": "baseline",
-      "status": "A · Baseline ready · 72 ms load · session only"
+      "status": "A · Baseline ready · 43 ms load · session only"
     },
     {
       "theme": "light",
       "font": "plex",
-      "status": "B · Precision ready · 62 ms load · session only"
+      "status": "B · Precision ready · 35 ms load · session only"
     },
     {
       "theme": "light",
       "font": "editorial",
-      "status": "C · Editorial ready · 65 ms load · session only"
+      "status": "C · Editorial ready · 32 ms load · session only"
     }
   ],
   "modes": [

@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "sourceCommit": "8b76fef6943b4e966b0feaf037184d9a8260f70b",
+  "setup": "Dedicated relay-link-v25-api35 emulator; only com.relaylink.mobile test data cleared after AVD/qemu identity checks",
+  "runtime": "actual Android API35 emulator development build",
+  "home": "disabled control visible",
+  "developmentIntroductionDismissed": true,
+  "developmentMenuClosed": true,
+  "developmentIntroductionTapAttempts": 1,
+  "developmentMenuCloseAttempts": 1,
+  "emulatorLauncherRecoveries": 0,
+  "physicalDevice": "NOT RUN"
+}

@@ -27,3 +27,11 @@ Context may suggest relevant actions without unexpectedly moving critical contro
 Mobile preserves the vocabulary/state hierarchy with simpler sections and at least 44-point targets. Home shows PC/access state and available local actions; later controls are labeled planned. Detail does not require repeated nested rounded cards. Themes, reduced motion, keyboard/screen-reader behavior and readable scaling stay coordinated.
 
 Native target correction gate: actual API 35 XML measured the reduced-motion Switch at roughly 27 dp high despite its surrounding row. Before finalizing, enlarge the switch's own layout to at least 48 dp, preserve its accessible name/value, and verify the actual Android bounds using measured display density as well as the web target bounds. Repeat theme/motion/search and responsive regressions; a larger surrounding noninteractive row alone does not prove a comfortable switch target.
+
+## V2.5 current presentation — November 7, 2026
+
+The current product language supersedes the earlier table's “Custom workspace” label: call that future zone **Personalized Command Center**. Desktop keeps **Command Center**, **RELAY LINK**, **This PC** and **Quick Access**; no workspace breadcrumb or project-management vocabulary belongs in the product. Phase/progress and native diagnostics belong in About/information surfaces.
+
+Jump to Section is the primary Settings navigation. Keyword search is secondary inside its picker. Unavailable device/control/activity functions use concise preview states, without invented devices or telemetry. Android buttons, switches and the adjustable precision-slider target use 48 dp layouts; actual switch/slider bounds were verified. The future customization/adaptation allocation above remains proposed, with fixed visible safety controls and no extra phase or functionality authorized.
+
+The [V2.5 review](v2.5/VERIFICATION_REPORT.md) and [three typography comparisons](v2.5/TYPOGRAPHY_REVIEW.md) record implemented refinements, executed checks and remaining owner/hardware gates. A remains the default baseline; no final font or sound choice has been adopted. Phase 0 remains PASS at 4%.

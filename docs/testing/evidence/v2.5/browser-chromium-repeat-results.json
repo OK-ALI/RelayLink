@@ -1,0 +1,380 @@
+{
+  "result": "PASS",
+  "runtime": "local Chrome for Testing 156.0.8078.4 / Playwright Chromium v1248; same engine build as CI",
+  "uniqueCases": 11,
+  "repetitions": 3,
+  "stats": {
+    "startTime": "2026-11-07T13:47:45.509Z",
+    "duration": 27106.525999999998,
+    "expected": 33,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "title": "selected and pressed text states remain readable in every theme on both renderers",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7713
+        }
+      ]
+    },
+    {
+      "title": "selected and pressed text states remain readable in every theme on both renderers",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6655
+        }
+      ]
+    },
+    {
+      "title": "selected and pressed text states remain readable in every theme on both renderers",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5301
+        }
+      ]
+    },
+    {
+      "title": "audio preview failure remains local and does not affect navigation or access state",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3621
+        }
+      ]
+    },
+    {
+      "title": "Desktop navigation, Jump discovery, themes and disabled control regressions",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5490
+        }
+      ]
+    },
+    {
+      "title": "Desktop font previews load, survive navigation, race safely and reset on reload",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6273
+        }
+      ]
+    },
+    {
+      "title": "Desktop direct anchor, keyboard focus, OS reduction and feedback cancellation",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4285
+        }
+      ]
+    },
+    {
+      "title": "Desktop 800: all four themes and responsive composition",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4862
+        }
+      ]
+    },
+    {
+      "title": "Desktop 1280: all four themes and responsive composition",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5070
+        }
+      ]
+    },
+    {
+      "title": "Desktop 1920: all four themes and responsive composition",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4841
+        }
+      ]
+    },
+    {
+      "title": "Mobile 360: Jump, themes, touch targets and motion",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2549
+        }
+      ]
+    },
+    {
+      "title": "Mobile 430: Jump, themes, touch targets and motion",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2443
+        }
+      ]
+    },
+    {
+      "title": "Mobile 800: Jump, themes, touch targets and motion",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2475
+        }
+      ]
+    },
+    {
+      "title": "audio preview failure remains local and does not affect navigation or access state",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1732
+        }
+      ]
+    },
+    {
+      "title": "Desktop navigation, Jump discovery, themes and disabled control regressions",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4417
+        }
+      ]
+    },
+    {
+      "title": "Desktop font previews load, survive navigation, race safely and reset on reload",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3976
+        }
+      ]
+    },
+    {
+      "title": "Desktop direct anchor, keyboard focus, OS reduction and feedback cancellation",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2714
+        }
+      ]
+    },
+    {
+      "title": "Desktop 800: all four themes and responsive composition",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2917
+        }
+      ]
+    },
+    {
+      "title": "Desktop 1280: all four themes and responsive composition",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3043
+        }
+      ]
+    },
+    {
+      "title": "Desktop 1920: all four themes and responsive composition",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2520
+        }
+      ]
+    },
+    {
+      "title": "Mobile 360: Jump, themes, touch targets and motion",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2781
+        }
+      ]
+    },
+    {
+      "title": "Mobile 430: Jump, themes, touch targets and motion",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2235
+        }
+      ]
+    },
+    {
+      "title": "Mobile 800: Jump, themes, touch targets and motion",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2248
+        }
+      ]
+    },
+    {
+      "title": "audio preview failure remains local and does not affect navigation or access state",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2065
+        }
+      ]
+    },
+    {
+      "title": "Desktop navigation, Jump discovery, themes and disabled control regressions",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2964
+        }
+      ]
+    },
+    {
+      "title": "Desktop font previews load, survive navigation, race safely and reset on reload",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3920
+        }
+      ]
+    },
+    {
+      "title": "Desktop direct anchor, keyboard focus, OS reduction and feedback cancellation",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2520
+        }
+      ]
+    },
+    {
+      "title": "Desktop 800: all four themes and responsive composition",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2814
+        }
+      ]
+    },
+    {
+      "title": "Desktop 1280: all four themes and responsive composition",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2783
+        }
+      ]
+    },
+    {
+      "title": "Desktop 1920: all four themes and responsive composition",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2887
+        }
+      ]
+    },
+    {
+      "title": "Mobile 360: Jump, themes, touch targets and motion",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2440
+        }
+      ]
+    },
+    {
+      "title": "Mobile 430: Jump, themes, touch targets and motion",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2689
+        }
+      ]
+    },
+    {
+      "title": "Mobile 800: Jump, themes, touch targets and motion",
+      "repeatEachIndex": null,
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2252
+        }
+      ]
+    }
+  ],
+  "scope": "Actual browser keyboard/focus and responsive regressions; not native IPC or Android evidence."
+}
