@@ -49,6 +49,8 @@ try {
   const startupDeadline = performance.now() + 180000;
   let introductionDismissed = false;
   let menuClosed = false;
+  let introductionAttempts = 0;
+  let menuCloseAttempts = 0;
   let launcherRecoveries = 0;
   while (performance.now() < startupDeadline) {
     await delay(1000);
@@ -62,24 +64,24 @@ try {
       if (xml.includes("isn't responding")) {
         throw new Error('Unexpected Android ANR: inspect failure evidence');
       }
-      if (xml.includes('Remote access is off')) break;
-      if (
-        !introductionDismissed &&
-        xml.includes('This is the developer menu.') &&
-        xml.includes('text="Continue"')
-      ) {
+      if (xml.includes('This is the developer menu.') && xml.includes('text="Continue"')) {
+        assert(
+          introductionAttempts++ < 3,
+          'Expo introduction did not dismiss after bounded attempts',
+        );
         tap(xml, 'Continue');
         introductionDismissed = true;
       } else if (
-        !menuClosed &&
         xml.includes('Runtime version: exposdk:') &&
         xml.includes('content-desc="Close"')
       ) {
+        assert(menuCloseAttempts++ < 3, 'Expo developer menu did not close after bounded attempts');
         tap(xml, 'Close');
         menuClosed = true;
-      }
+      } else if (xml.includes('Remote access is off')) break;
     } catch (error) {
       if (error instanceof Error && error.message.startsWith('Unexpected Android ANR')) throw error;
+      if (error instanceof Error && error.message.startsWith('Expo ')) throw error;
       /* Retry while the emulator and native view initialize. */
     }
   }
@@ -104,6 +106,8 @@ try {
         refinement,
         developmentIntroductionDismissed: introductionDismissed,
         developmentMenuClosed: menuClosed,
+        developmentIntroductionTapAttempts: introductionAttempts,
+        developmentMenuCloseAttempts: menuCloseAttempts,
         emulatorLauncherRecoveries: launcherRecoveries,
         physicalDevice: 'NOT RUN',
       },

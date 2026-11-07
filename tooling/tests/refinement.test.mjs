@@ -18,6 +18,34 @@ test('native automation rejects clipped controls and chooses the foreground moda
   assert.equal(visibleTarget(node('[0,100][200,200]', 'enabled="false"'), 'Appearance'), undefined);
   assert.equal(
     visibleTarget(
+      '<node clickable="true" enabled="false" bounds="[0,100][300,300]"><node text="Unavailable" enabled="true" bounds="[20,120][280,260]" /></node>',
+      'Unavailable',
+    ),
+    undefined,
+  );
+  assert.equal(
+    visibleTarget(
+      '<node clickable="true" enabled="true" bounds="[0,100][300,300]"><node text="Hidden" enabled="true" bounds="[0,0][0,0]" /></node>',
+      'Hidden',
+    ),
+    undefined,
+  );
+  assert.equal(
+    visibleTarget(
+      '<node clickable="true" enabled="true" bounds="[105,2061][975,2148]"><node text="Continue" enabled="true" bounds="[464,2082][617,2127]" /></node>',
+      'Continue',
+    )?.y,
+    2104,
+  );
+  assert.equal(
+    visibleTarget(
+      '<node clickable="true" enabled="true" bounds="[922,1630][1019,1724]"><node content-desc="Close" enabled="true" bounds="[949,1656][991,1698]" /></node>',
+      'Close',
+    )?.x,
+    970,
+  );
+  assert.equal(
+    visibleTarget(
       '<node class="android.widget.SeekBar" content-desc="Preview volume, 25%" enabled="true" bounds="[53,787][1028,913]">',
       'Preview volume',
     )?.y,
